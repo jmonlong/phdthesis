@@ -1,0 +1,840 @@
+%% Introducing SV and CNV
+\section{Structural Variation and Copy-Number Variation}
+
+\subsection{Types of Structural Variants}
+Structural variants (SVs) are defined as genetic variation of more than 50 base pairs.
+The different canonical forms of SV include deletion, duplication, novel insertion, inversion and translocation\cite{Hall2012}.
+Deletions and duplications of a genomic region, which affect DNA copy number, are collectively known as copy number variants (CNVs).
+A duplication can be broadly defined as a gain in copy number of a region, either in tandem configuration (tandem duplication) or in a distant locus.
+In contrast, inversion and translocation are considered balanced rearrangements: no DNA sequence is lost or gain.
+In reality, small deletion or duplication are often present around their breakpoints\cite{Sudmant2015a,Collins2017}.
+\begin{comment}
+  In \citet{Sudmant2015a}, only 20\% are simple inversions; 54\% are duplicated inversion and the rest with other CNVs.
+\end{comment}
+Transposable elements retrotransposition creates mobile element insertion (MEI).
+Because these elements are present in the genome, polymorphic MEI are often considered CNVs.
+In general, a ``novel'' insertion involves the insertion of a DNA sequence absent from the genome, e.g. viral DNA, but the term is also used in the MEI literature to describe a new insertion of a transposable element.
+
+Complex SVs involve a combination of canonical forms at the variant level\cite{Quinlan2012}.
+In a recent study using high-depth long-insert and linked reads sequencing\cite{Collins2017}, thousands of SVs were found to be complex.
+\begin{comment}
+  In \citet{Collins2017} 2.5\% were complex, 16.8\% were balanced or complex.
+\end{comment}
+Most of these complex SVs (84.4\%) involved inversions, consistent with previous studies that had noticed small deletions and duplications at inversions breakpoints\cite{Sudmant2015a,Collins2017,Brand2015}.
+\begin{comment}
+  \citet{Brand2015} describe dupINVdup variants, i.e. paired duplications flanking an inversion. 8.1\% of patients with autism spectrum disorder had one and they found that only 39.3\% of inversions were canonical.
+\end{comment}
+More extreme genomic events can create complex SVs that combine dozens of canonical forms and span large regions or several chromosomes.
+An example is chromothripsis, also called chromosome shattering, which creates a highly fragmented profile with dozens of segments recombined in a different order resulting in a patchwork of duplicated/deleted/inverted regions.
+%% Chromoanasynthesis and chromoplexy
+While originally though to be rare, recent surveys showed a higher than expected prevalence of somatic and germline chromothripsis.
+\begin{comment}
+  Using arrays, \citet{Zack2013} estimated that 5\% of the tumors experienced chromothripsis, while \citet{Kim2013b} came up with a lower number of 1-2\%.
+\end{comment}
+For example, a pan-cancer study found chromothripsis in 38.9\% of the glioblastomas and in 8.7\% of other cancer types\cite{Malhotra2013}.
+In the recent study of 689 individuals with autism spectrum disorder and other developmental abnormalities, two cases harbored germline chromothripsis\cite{Collins2017}.
+
+While SVs are intuitively defined in relation to the ancestral state of the genome, it is important to note that in practice the reference genome is used as baseline.
+As a result, a variant is a difference in sequence compared to the reference genome but not necessarily compared to the ancestral genome. 
+For example, a recent mobile element insertion might be present in the reference genome but when absent, i.e. in the ancestral state, it is often called a deletion.
+Similarly, rare deletions of unique regions in the reference genome would resemble novel insertions.
+
+CNVs and in particular deletions have been widely studied.
+One reason is technological as large CNVs have been routinely studied before the advent of high-throughput sequencing, for example using karyotyping or hybridization approaches (see section \ref{sec:prehts}).
+In addition, CNVs, and in particular deletions, are though to have a stronger functional impact compared to balanced variants.
+A deletion disrupts an entire region and potentially several genes while balanced SVs or insertions might affect only the regions around the variant boundaries or insertion site.
+
+The gain or loss of a full chromosome, also called aneuploidy, is particularly rare in normal cells due to the large phenotypic effects of a dosage change in hundreds to thousands of genes.
+However, aneuploidy is a hallmark of cancer and observed frequently across cancer types, as described in Section \ref{sec:canceraneu}. 
+With whole-genome doubling, full or arm-level chromosomal CNVs are at the high end of the variant size spectrum.
+
+\subsection{Mechanism of Formation}
+The mechanisms of SV formation are diverse and result in a heterogeneous distribution of SV across the genome, both in term of size and location\cite{Hall2012,Sharp2006,Mills2011}.
+New variants can occur during DNA repair, recombination, replication or through retrotransposition.
+
+Non-homologous end joining (NHEJ) is a DNA repair mechanism that often results in deletions.
+In the presence of double-strand breaks, the two ends slowly denature until the arrival of the repair machinery that joins the two ends.
+Occasionally, misalignment of the overhanging ends lead to small insertions.
+Larger sequences can also be incorporated during the repair, leading to large insertions.
+
+Microhomology-mediated end joining (MMEJ) is a type NHEJ which repair the double-strand DNA breaks using micro-homology (5-25 bp) between the broken ends. 
+MMEJ often result in deletions of the sequence between the micro-homology regions but can also create translocation and more complex variants.
+
+Homologous recombination is another repair mechanism that uses a template, usually another chromatid, to repair double strand breaks.
+By aligning a template, homologous recombination can repair accurately a double strand break even if part of the original nucleotides were lost.
+Mis-alignment, potentially due to the presence of repeats, results in repair between non-allelic regions and leads to deletions.
+
+Similarly, non-allelic homologous recombination (NAHR) occurs when sister chromatids are not correctly aligned during recombination.
+Depending on the mis-alignment configuration, NAHR results in deletion, duplication or inversion.
+%% Potentially more on the different configuration and resulting SV types.
+The chromatid misalignment is often caused by the presence of highly similar sequences.
+Genomic repeats like segmental duplications and transposable elements are frequent templates for NAHR.
+The majority of NAHR in recent human evolution involved L1 elements although Alus are enriched around older rearrangements\cite{Bourque2009,Kim2008}.
+NAHR can also occur during mitosis\cite{Gu2008}.
+
+
+Fork stalling and template switching (FoSTeS) occurs during DNA replication when a strand is detached from its current fork and continues replicating in another strand.
+Depending on the sequence of switches, FoSTeS can result in a translocation, deletion, duplication or inversion.
+
+Slippage during DNA replication can lead to small deletions or duplications, creating and maintaining tandem repeats.
+Short tandem repeats are particularly susceptible to shrinkage or expansion using this mechanism.
+While each slippage might only affect a few base pairs, sequential events lead to polymorphic alleles that can differ by hundreds of base pairs between two genomes.
+\begin{comment}
+  Slippage occurs when the DNA polymerase and the newly synthesized stand detaches when it encounters a DNA repeat and reattach after pairing with a non-allelic repeat, usually upstream (resulting in expansion).
+  The shrinkage/expansion is caused by the template/daughter strand contracting when forming a hairpin due to the repeats.
+  This type of repeat-induced secondary structure can also contribute to the replication stalling and detachment.
+\end{comment}
+
+To retrotranspose, a mobile element is first transcribed into a RNA copy which is then converted back to a DNA.
+The DNA copy then inserts itself at another location of the genome.
+The DNA sequence of autonomous TEs, such as L1s, code for proteins responsible for the reverse transcription and insertion into the genome.
+Other TEs use the machinery from autonomous elements to retrotranspose. 
+A similar mechanism is responsible for the insertion and retrotransposition of viral DNA.
+Once inserted in the host genome, the viral DNA can often copy itself in other genomic locations or in other cells.
+Similar to retrotransposons, new insertions can then be considered as duplication events.
+
+The mechanism of formation is often inferred from the sequence around the variant boundaries\cite{Mills2011}.
+Segmental duplication or large repeats flanking a variant suggest NAHR.
+Micro-homology at the boundaries is a sign of MMEJ.
+No homology points at either NHEJ or FoSTeS.
+
+Aneuploidy arise from problems with the chromosome migration during mitosis.
+The main mechanism behind arm-level losses or gains are fusion of chromosomes after pericentromeric breakage.
+Breaks near centromeres can happen in fragile sites, which tend to break under certain conditions, or due to merotelic attachment, an abnormal attachment of sister chromatids during mitosis\cite{Martinez-A2011}.
+
+\subsection{Association with Disease and Functional Impact of CNV}
+
+\paragraph{CNV and disease}
+
+Individuals suffering from numerous diseases including obesity\cite{Bochukova2010}, schizophrenia\cite{Stone2008}, autism\cite{Stefansson2014}, epilepsy\cite{Mefford2011}, Crohn's Disease\cite{McCarroll2008a}, cancer\cite{Beroukhim2010} and other inherited diseases \cite{Balzola2010,Ayarpadikannan2014}, carry SVs with a demonstrated detrimental effect\cite{Conrad2010,Firth2009,Spielmann2013}.
+%% DiGeorge/velocardiofacial syndrom is characterized by deletion of 22q11.2.
+First, a few Mendelian disorders are exclusively caused by CNV in specific regions.
+For example, Williams-Beuren Syndrome which typically presents facial dysmorphies and intellectual disability, is caused by deletions at 7q11.23.
+As another example, the deletion of the {\it PMP22} gene is the most common mutation responsible for hereditary neuropathy with liability to pressure palsies.
+\begin{comment}
+  {\it PMP22} protein is a component of myelin, a substance that protects nerves, and seem to be specifically responsible to protecting nerves from physical pressure.
+\end{comment}
+In the early 1990s, Lupski et al. were surprised to find that a duplication in the same region segregated perfectly with hereditary neuropathy Charcot-Marie-Tooth type 1A\cite{Lupski1991}.
+The region had been identified using linkage analysis but the idea of a gene-dosage mechanism for the disease was so unexpected that both {\it Nature} and {\it Science} refused to review the paper.
+
+CNVs resulting in gene-dosage changes have often milder effects but many have been associated with complex traits or susceptibility to disease.
+Frequent deletions in the {\it GSTM1} gene were identified as a risk factor for asthma in independent studies across different populations\cite{Liang2013}.
+Another example of common disease-associated CNV involve the {\it DEFB4} gene.
+The median copy number of this gene is 4 in healthy individuals.
+A lower number of copies has been associated with Crohn disease\cite{Fellermann2006} and higher copy number with psoriasis\cite{Hollox2008}.
+\begin{comment}
+  \citet{Fellermann2006} found a significantly lower copy number in this gene in a cohort of colonic Crohn's Disease and another of inflammatory bowel disease.
+  Individuals with 3 copies or fewer were three times more likely to develop colonic Crohn's Disease than individuals with 4 copies or more.
+  \citet{Hollox2008} observed a higher copy number in psoriasis patients in two cohorts of Dutch and German individuals.
+\end{comment}
+Deletions and duplications of the {\it CCL3L1} gene are also associated with distinct phenotypes.
+Deletions increase HIV/AIDS susceptibility\cite{Gonzalez2005} while duplications increase the risk to develop rheumatoid arthritis\cite{McKinney2008}.
+\begin{comment}
+  {\it CCL3L1} is located in a segmental duplication and encodes a cytokine protein.
+  The CNV status was tested with RT-PCR on 1K controls from 57 populations and 4K HIV+ and HIV- individuals.
+  The same approach was performed for rheumatoid arthritis on 1K cases from NZ and UK and 1.5K controls.
+\end{comment}
+In the examples above, variation in the copy number of the entire gene is affecting the gene dosage resulting in gene expression changes.
+Although genes with common CNVs are assumed to be tolerant to dosage changes, gene expression tend to change with the number of gene copies in the genome.
+For example, \citet{Handsaker2015} studied multi-copies CNVs and showed that the resulting gene dosage changes correlated with gene expression.
+
+\paragraph{CNV and gene expression}
+
+Quantitative trait loci (QTL) and more precisely expression QTLs (eQTLs) are genomic variants that are associated with changes in gene expression.
+While most of the eQTLs tested and found are single nucleotide variants (SNVs), WGS has allowed the detection of hundreds of SV-eQTLs.
+Among the first to look for SV-eQTLs, Stranger et al. identified dozens of CNVs in four human populations that were associated with gene expression\cite{Stranger2007b}.
+Around half of the associated CNVs were located outside of the affected gene or only overlapped partially, hinting at an alternative to the gene dosage mechanism.
+Later, Lower et al. characterized deletions that affected the expression of a gene located 300 Kbp away, {\it NMEA}, by analyzing gene expression and using conformation capture to demonstrate physical contact between the two distant regions\cite{Lower2009}.
+Combining their WGS data with RNA sequencing across 462 individuals, the most recent SV catalog from the 1000 Genomes Project identified 54 eQTLs whose lead variant was a SV and 166 additional SVs that were in linkage disequilibrium with SNV-eQTLs\cite{Sudmant2015a}.
+Most of these SV-eQTLs overlapped coding sequence but some were located in non-coding regions upstream of the affected gene.
+Only 0.56\% of the eQTLs were attributed to SV but this number might be an underestimation because of the higher noise in SV calling compared to SNV calling.
+To improve on this, a recent study used deep WGS to more reliably call SVs and investigated SV-eQTLs in multiple tissues from the GTEx dataset\cite{Chiang2017}.
+Using state-of-the-art approaches to infer causal variants, they estimated that 3.5-6.8\% of eQTLs could be attributed to SVs.
+Although less abundant than SNV-eQTLs, SVs had a larger effect size.
+The comprehensive analysis of the location and effect of these causal SV-eQTLs nicely clarified the relation between SV and gene expression.
+When overlapping coding regions, SV-eQTLs affected gene expression following the gene dosage model, that is deletion leading to down-regulation and duplication to up-regulation.
+Non-coding SV-eQTLs, which represented the vast majority of SV-eQTLs (89\%), were enriched in or close to regulatory regions (e.g. exons, transcription start site, transcription factor binding sites, enhancers, gene 3’ end) and all types of SV could lead to both higher or lower gene expression.
+Finally, the effect of rare SVs on gene expression was also explored.
+Despite the challenge of analyzing rare variants in a cohort of only 147 individuals, a clear enrichment of rare SVs was found around genes that showed outlier expressions in the cohort.
+These gene-altering rare SVs included cases from both the gene dosage and regulatory region disruption model.
+
+%% Enhancer hijacking
+Several recent studies elegantly shed light into a mechanism by which non-coding CNV alter gene expression called enhancer hijacking: that is, a regulatory region inducing the ectopic expression of a gene it normally doesn't regulate because of a CNV-mediated re-positioning.
+A first example was comprehensively described in individuals with limb malformation\cite{Lupianez2015}.
+Using conformation capture sequencing and by recreating SVs in mice with CRISPR/Cas genome editing, they elegantly showed that SVs crossing the boundaries of topologically associating domains (TADs) could lead to strong phenotypes.
+TADs are 3D domains (mean size 830 Kbp) that confine regulatory elements with their targets.
+The deletions, tandem duplications and inversions resulted in ectopic interactions between a cluster of enhancers and genes located in the neighboring TAD.
+Ectopic interactions were responsible for ectopic expression of these genes during limb development in mice whose genome had been edited to recreate the SVs.
+With additional genome editing and conformation capture experiments, this study concluded that the crossing of the TAD boundary was the crucial factor rather than simply the distance between enhancers and genes.
+Enhancer hijacking might also be important in cancer where a single CNV might lead to a strong expression of oncogenes.
+To explore this, \citet{Weischenfeldt2016} developed a method that detects associations between somatic CNV breakpoints overlapping several TADs and gene over-expression.
+In their study, \citet{Weischenfeldt2016} first described a known cancer gene, {\it TERT}, which had been already found to be upregulated by such mechanisms.
+Interestingly, both deletion and duplication resulted in over-expression.
+They further described two genes, {\it IRS4} and {\it IGF2}, using orthogonal experiments to support how the presence of somatic CNVs lead to changes in chromatin state and physical contact.
+For example, somatic deletions downstream of {\it IRS4} overlapped a TAD boundary and resulted in 25-400 fold over-expression of the gene in several cancer types.
+In contrast, the ectopic expression of {\it IGF2} was due to single tandem duplication of {\it IGF2} and a super-enhancer in the neighboring TAD that created a novel chromatin domain with both.
+Additional experiments showed that the region was active and in contact with the gene promoter in tumor with the duplication.
+These enhancer hijacking events are important because the change of a single copy can lead to large over-expression.
+In contrast, dosage effect due to full-gene CNV tend to be as strong as the amplification.
+
+\section{Whole-Genome Sequencing}
+
+\subsection{SV Detection Before High-Throughput Sequencing}
+\label{sec:prehts}
+
+Early cytogenetic techniques were able to detect aneuploidy and extremely large SVs.
+Thanks to banding, each chromosome in a karyotype can be uniquely identified which facilitated the detection of trisomies and their associated disorder, such as Down syndrome (trisomy 21) and Edwards syndrome (trisomy 18).
+Furthermore, the bands can be used to identify translocations and large inversions or CNVs.
+SVs need to span several millions of bases, typically more than 10-20 Mbp, to have a chance to be visible in the karyotype.
+
+Fluorescent {\it in situ} hybridization (FISH) was developed in the 1980s.
+Fluorescent probes bind to specific genomic regions by hybridization, i.e. through DNA sequence complementarity.
+The presence or absence of the DNA sequence was assessed by inspecting the fluorescence in the cells or tissue samples.
+
+In array comparative genomic hybridization (aCGH) experiments, DNA from a test sample and reference sample are labeled using different fluorophores and hybridized to several thousand probes.
+The probes, which usually tag most of the known genes and tile non-coding regions of the genome, are printed on a glass slide.
+The fluorescence of each probes is used to estimate the amount of DNA sequence in the test sample compared to the reference sample.
+Using this method, CNV down to approximately 100 Kbp of DNA sequences can be detected.
+Arrays also can be designed specifically to target regions of interest, for example with recurrent CNVs.
+These custom arrays don't cover the genome uniformly but can detect smaller CNVs in the regions with of high probe density.
+This technology is not able to detect balanced chromosomal imbalances such as translocations or inversions.
+
+%% Amplification and Sanger sequencing
+
+\subsection{A New Hope}
+While large SVs have been identified by cytogenetic approaches and array-based technologies, whole-genome sequencing (WGS) could in theory discover SVs of all sizes or types\cite{Alkan2011}.
+The vast majority of studies follow a re-sequencing strategy where short DNA fragments (or reads) are sequenced and aligned (or mapped) to the reference genome.
+Furthermore, both ends of a DNA fragment are often sequenced and this pair information can be used to improve alignment to the reference genome and variant calling.
+The reads and their alignment are then used to find single-nucleotide variants (SNVs), small insertions/deletions (indels) but also small SVs across the genome.
+Array-technology required dense representation of the hybridization probes in a region of interest to be able to detect CNVs smaller than 100 Kbp.
+With WGS, the sequencing depth is now the main limiting factor, although even early experiments could detect thousands of small SVs.
+For example, the most recent survey of the 1000 Genomes Project used WGS with a sequencing depth of 7x and identified more than four thousands variants per individual with a median variant size below 40 Kbp for the six different SV types analyzed\cite{Sudmant2015a}.
+In contrast to aCGH, the sequencing reads can also be used to detect balanced variants such as inversions, translocations and novel insertions.
+Although the detection of such variants is more challenging than single-nucleotide variant (SNV) calling, WGS is a one-fit-all experiment that greatly increases the resolution of SV detection.
+
+To detect SVs from WGS, methods analyze either read-depth (RD) variation\cite{Boeva2011,Abyzov2011,Klambauer2012}, paired-end information\cite{Chen2009,Lindberg2014}, breakpoints detection through split-read approach\cite{Ye2009} or {\it de novo} assembly\cite{Rimmer2014}.
+Methods are described in more details in section \ref{intro:methods}, with a particular focus on CNV detection.
+
+Another unique aspect of WGS is the possibility of pooling experiments to increase the detection power of common variants.
+Instead of analyzing each experiment separately, the sequencing reads can be pooled across several samples.
+For example, it is sometimes challenging finding several reads spanning a SV breakpoint within a single sample.
+By pooling several experiments, the number of supporting reads increases if a SV is shared by several samples.
+This approach was used across hundreds of samples of the 1000 Genomes Projects and greatly increased the number of SVs discovered in the population\cite{Mills2011,Handsaker2011}.
+
+\subsection{The Technical Bias Strikes Back}
+Although it represents a considerable improvement in term of resolution, WGS is affected by technical biases that remain an important challenge.
+Indeed, it has been shown that various features of sequencing experiments, such as mappability, GC content or replication timing, have a negative impact on the uniformity of the coverage\cite{Treangen2011,Teo2012,Benjamini2012,Koren2014,Cheung2011}.
+In addition to its effect on read coverage, repeated sequences lead to confusion in read mapping, creating SV-like patterns and thus false-positives when calling variants.
+
+GC content is a well-known source of bias although not completely understood.
+Reduced efficiency of PCR amplification explains a large fraction of this bias and more robust protocol were proposed\cite{Aird2011,Kozarewa2009}.
+\begin{comment}
+  \citet{Aird2011} improved PCR protocol by using longer denaturation steps, different temperature for primer annealing, different reagents/polymerase.
+  \citet{Kozarewa2009} introduced a PCR-free protocols where the amplification is performed after cluster formation rather than before (I think).
+\end{comment}
+Still other steps of the sequencing protocols adds substantial bias and GC bias persists even with optimized protocols\cite{Aird2011}.
+The bias patterns tend to be different from a sequencing center to the other\cite{Benjamini2012}, suggesting an effect of the library preparation or sequencing machinery.
+For these reasons, it has been challenging to correct for this source of bias.
+With PCR-free libraries, the effect of GC bias is reduced but still needs to be corrected for when comparing read coverage across the genome.
+
+DNA replication also affects the distribution of reads across the genome.
+Although sequencing of bulk samples, i.e. of many cells, should minimize the effect of replication patterns, systematic increase might be present in regions that tend to replicate earlier.
+For example, Koren et al. estimated replication timing across the genome using WGS of cells in S and G1 phases\cite{Koren2012}.
+
+Finally, the mappability of the sequence affects how many reads can be confidently mapped to the reference genome.
+The presence of repeats and other similar regions lead to multi-mapping, i.e. several positions where a read could have originated from.
+Hence, when using reads with unique mapping in the genome, the coverage in repeat-rich regions drops considerably.
+The challenges and proposed solutions associated with mappability are described in more detail in section \ref{intro:map}.
+
+Unfortunately, the variability in term of read distribution is difficult to model and correct for because it involves various factors, including some that vary from an experiment to another and others that are still unknown.
+This issue particularly impairs the detection of SV supported by weaker signal, which is inevitable in regions of low-mappability, for smaller SVs or in cancer samples with stromal contamination or cell heterogeneity.
+
+\subsection{The Return of the Long Reads}
+Sanger sequencing, invented in 1977\cite{Sanger1977}, was used for the original sequencing of the human genome\cite{Lander2001} and is still used today to sequence DNA fragment 500 to 1000 bp long.
+The technology that followed in the 2000s is capable of sequencing shorter reads but much more efficiently resulting in a cost order of magnitudes lower.
+However, many of the challenges faced by WGS is a result of the short size of the sequenced read.
+Recently, new technologies have been developed to perform WGS using much longer reads, in the range of 10-100 Kbp.
+PacBio was the first and has been successfully applied to several human genomes\cite{Chaisson2014,Pendleton2015,Huddleston2016}.
+Nanopore sequencing is becoming efficient with the first human WGS sample just released publicly\cite{Jain2018}.
+Although the cost and rate of sequencing errors remains high compared to short-read sequencing, the benefit for genome assembly or SV detection is clear.
+
+
+\section{Existing CNV Detection Methods}
+\label{intro:methods}
+
+\subsection{Different Strategies to Detect SV and CNV}
+
+The vast majority of SV detection methods rely on evidence from the read mapping on a reference genome: changes in read depth, B-allele frequency, discordant paired-end mapping, or split-reads.
+{\it De novo} genome assembly could also be used to identify SVs but its application using short read sequencing remains challenging.
+
+\paragraph{Read depth}
+Changes in the copy number in a region should lead to changes in the number of reads mapped to this region in the reference genome.
+By modeling read depth, sometimes called read coverage or depth of coverage, one approach is to identify regions with significantly more reads (duplication) or fewer reads (deletion) than in the genome or the flanking regions.
+Only CNV, i.e. imbalanced SVs, can be detected by these approaches.
+CNV detection methods that use read depth are described in more details in the next section.
+% Resolution: the larger the variant the better. The more sequencing the better
+
+\paragraph{B-allele frequency}
+The proportion of reads supporting heterozygous SNVs can help identify CNVs too.
+The loss of heterozygozity within deletions or the deviation from the 50\% coverage of the alternate allele can complement coverage signal.
+This approach was inspired from CNV detection strategies developed for SNP-array, such as in the {\sf ASCAT} method\cite{VanLoo2010}.
+Here the intensity of the probe and the so-called B-allele frequency was use in concert to call CNVs.
+Thanks to sequencing, both the coverage information and SNVs are more densely represented and lead to a better resolution.
+Still, the B-allele information is relevant only for CNVs large enough to span several heterozygous SNVs.
+Methods such as {\sf ERDS}\cite{Zhu2012}, \textsf{Control-FREEC}\cite{Boeva2012} or \textsf{Sequenza}\cite{Favero2015} integrate the B-allele frequency information to call germline or somatic CNVs.
+% Resolution: the larger the variant the better. The more sequencing the better but not as much.
+
+\paragraph{Paired-end mapping}
+The distance between the two mapped reads in a pair and their orientation can also help identify SVs.
+Because the majority of the reads are expected to map correctly, they can be used to estimate the expected distribution of the distance between paired read.
+With this distribution, one strategy is to retrieve pairs that are significantly too close or too far from each other.
+Read pairs might map close to each other in the reference genome because of an insertion in the sequenced DNA somewhere between the reads.
+More typically, reads that map far from each other suggest a deletion in the sequenced DNA or potentially a translocation.
+Finally, tandem duplications or inversions should lead to some read pairs mapping in the incorrect orientation relative to each other.
+All those reads with discordant paired-end mapping are typically retrieved and clustered together.
+Each cluster of reads is then disentangled to predict the most likely variant and the location of its breakpoints.
+% Resolution: The more sequencing the better
+
+\paragraph{Split-reads}
+The strategies described above use either reads within the variant or around the variant's boundaries.
+In contrast, the split-read approach looks for reads exactly spanning a variant's breakpoint.
+%% Although it can be used with single read sequencing, paired-sequencing improves its accuracy drastically.
+Generally, one read is mapped uniquely to the genome and serves as an anchor while its pair is split in two pieces which are then aligned separately.
+This split-mapping can be computationally expensive.
+To limit the computational cost, methods analyze only pairs with one unmapped reads or restrict the range searched for the split-mapping\cite{Ye2009,Faust2012}.
+Split-reads can be searched specifically to complement candidates variants identified from discordant paired-end mapping.
+These additional supporting reads are tallied and used to assess the final supporting evidence in methods such as \textsf{LUMPY}\cite{Layer2012} or \textsf{DELLY}\cite{Rausch2012}.
+% Resolution: The more sequencing the better. The smaller the better sometimes.
+
+\paragraph{Assembly}
+Local assembly of reads around candidate variants has been used as in silico validation and to characterize the breakpoint sequence\cite{Wong2010,Chen2014}.
+Going further, recent methods have been using local read assembly as their main SV detection strategy, especially in cancer\cite{Zhuang2015,Chong2016}.
+If {\it {\it de novo}} assembly keeps improving, for example thanks to longer reads, SV could also be called by directly comparing assembled genomes or to the reference genome.
+For example, \textsf{Assemblytics} has been recently developed to align two assembled genomes and to annotate SVs that differentiate them\cite{Nattestad2016}.
+
+\subsection{CNV Detection Using Read Depth}
+
+\paragraph{Single-sample methods}
+The first methods that used read-depth signal to call CNVs assumed a uniform read coverage across the genome and attempted to segment it along the chromosomes.
+The segments produced by these approaches represent regions with similar copy number.
+The circular binary segmentation, adapted from aCGH analysis\cite{cam2008ide}, was one of the first and remains a popular segmentation algorithm.
+
+Subsequent methods offered better correction of technical biases and more modern segmentation techniques.
+For example, {\sf CNVnator}\cite{Abyzov2011} corrects for the GC bias, masks repeat-rich content and uses a mean-shift segmentation approach inspired from the image recognition field.
+{\sf CNVnator} has been used extensively in both germline and somatic CNV surveys\cite{Sudmant2015a,Chiang2017}.
+{\sf FREEC}\cite{Boeva2011} is another popular approach that can correct for both GC bias and mappability using precomputed tracks.
+It segments the corrected read-depth signal with a LASSO-based segmentation approach.
+{\sf FREEC} has been extended to {\sf Control-FREEC} to include the B-allele frequency in its CNV detection process.
+
+Methods inspired from aCGH offer to use another sample as control.
+Although variants in the control sample might create problems down the line, it is particularly sensible when studying tumors whose tumoral and normal tissues has been sequenced.
+By using the normal sample (usually blood) as control, the CNV detection is naturally reduced to the detection of somatic CNVs, i.e. present in the tumor but absent from the normal sample.
+In practice the methodology is similar to the single-sample approaches described above but using the read-depth ratio of the tumor versus normal tissues.
+A few methods have further been implemented specifically with cancer in mind and estimate the tumor ploidy and/or stromal contamination before or during CNV calling\cite{Favero2015,Ha2014}.
+
+\paragraph{Multi-samples methods}
+% Strength in numbers
+To improve the sensitivity of the variant detection and model the region-specific pattern of read depth, a few methods have been developed to jointly analyze multiple samples together.
+
+{\sf cn.MOPS} considers simultaneously several samples and detects copy number variation using a Poisson model and a Bayesian approach\cite{Klambauer2012}.
+By jointly analyzing samples, {\sf cn.MOPS} calls variants based on the strength of the read-depth signal across the samples.
+Even if the signal-to-noise ratio is small, the presence of a consistent pattern in several samples provides further evidence that the region contains a CNV in those samples.
+
+The second version of {\sf GenomeSTRiP} models the read depth across hundreds of samples as a mixture of Gaussian distributions\cite{Handsaker2015}.
+It is particularly useful to genotype multi-copies variants in the genomes, i.e. regions that have more than two copies in most individuals.
+Multi-copies variants create different groups of samples that translate into different RD distributions.
+By deconvoluting the mixture of distributions, the relative difference between RD modes help associate each distribution (and sample) to a copy-number estimate.
+As it relies on full signal (i.e. around integer values in the model) and a simple read-depth normalization, it is still limited in regions with low coverage and for small or rare variants.
+The power to detect a variant increases with the frequency of polymorphisms as more individuals populate the different genotype groups, improving the copy-number estimation.
+{\sf GenomeSTRiP 2.0} was successfully applied to 849 individuals from the 1000 Genomes Project and unmasked the population variation of hundreds of multi-copies variants.
+
+Both {\sf cn.MOPS} and {\sf GenomeSTRiP} use the additional samples to find further support for a variant, which is particularly efficient at detecting common CNVs.
+However, both methods define models with full copy number changes which has limited power when dealing with CNVs with partial signal (e.g. small variants, somatic variants, or variants in low-mappability regions).
+In contrast, the approach described later in this work uses the multiple samples differently: they are used to define a baseline for the technical variation, not to aggregate evidence supporting a variant.
+When the coverage diverges enough from this baseline, no matter the frequency or the strength, a CNV is called.
+In theory such approach will be able to better detect rare variants, small variants, somatic variants and variants in low-mappability regions.
+
+These approaches are also called population-based methods because they jointly study a population sample of sequencing experiments, i.e. a group of samples representative of the technical variation across experiments\cite{Handsaker2015}.
+Of note, the term population in this context refers to a statistical population rather than human populations.
+
+\section{Low-Mappability Regions} 
+\label{intro:map}
+
+\subsection{The Different Classes of Human Repeats}
+
+1.53 Gbp of the human genome is annotated as a repeat when considering elements identified by Repeat Masker\cite{Smit2015} and segmental duplications.
+Repeats are classified based on their size, sequence and mechanism of formation.
+
+Segmental duplications (SDs) are large regions ($>$1 Kbp) with high similarity ($>$90\%).
+Usually the results of NAHR, segmental duplication are known hotspots of structural variation.
+SDs can be nested, i.e. duplications within duplications.
+These class of repeat is thought to have boosted recent human evolution\cite{Bailey2006}.
+Humans experienced a high rate of SD creation in recent evolution which contributed to the expansion of important gene families.
+Large families of genes involved in immune response, cell adhesion and brain development cluster within SDs.
+
+Transposable elements (TE) represents approximately 45\% of the human genome.
+TEs are interspersed in the genome: if we cut the reference genome in consecutive windows of 500 bp, 70.5\% of the windows would overlap transposable elements.
+Their wide distribution make them a popular template for NAHR.
+Some TE families tend to cluster in fragile regions of the genome, which are regions that tend to break under certain stress conditions.
+A small fraction of TEs of the Alu, L1 and SVA families are still active in the human genome\cite{Mills2007}.
+Retrotransposition of these elements contributes to novel MEI.
+
+Satellites consist of sequences that are repeated, most of the time in a tandem configuration, and span large regions.
+The size and composition of the repeated sequence, also called unit, define the different classes of satellites.
+Most of the macro-satellites are present close to centromeres, the main family being alpha satellites whose 171 bp long unit is repeated to span on average 5.6 Kbp.
+The sequence of the unit varies from chromosome to chromosome.
+In addition to the tandem repetition of the unit sequence, higher order structure is present.
+The sequences can be duplicated in the same orientation or in an inverted conformation.
+
+Short tandem repeats (STRs), also called micro-satellites, have sequence units ranging from 1 to 10 bp.
+In addition to the tandem duplication that they share with SDs and satellites, short tandem repeats can vary because of slippage during the replication process.
+As a result, STRs are one of the most polymorphic class of variant in the human population, making them particularly useful for forensics and parentage tests.
+STRs have been recently linked to gene expression regulation\cite{Gymrek2016,Quilez2016} and potentially to polygenic disorders\cite{Hannan2018}.
+
+Low complexity regions are regions with high AT or GC content that, unlike satellites, have no apparent structure.
+Very little is known about their mechanism of formation and variation.
+Longer stretches of similar sequences might be present by chance in those regions which might promote homology-based mechanisms of CNV.
+Low complexity sequences might also favor secondary DNA structure, promoting replication slippage.
+
+\subsection{Impact of Repeats on Mappability}
+The presence of repeats can confuse read mapping and decrease the number of uniquely mapped reads in certain regions.
+These low-mappability regions can contain any class of repeats, e.g. segmental duplication, transposable elements, short tandem repeats or low-complexity sequences.
+The effect of repeats on the mapping of a read is specific to each region: it depends on the density and nature of the repeats present. 
+As a result, this technical variation is difficult to model.
+Existing methods either remove the signal in these regions or smooth the signal to avoid spurious variation (see \nameref{sec:repmeth}). 
+
+Furthermore, the multi-mapping of reads between similar repeat instances resembles signal supporting certain SVs.
+For instance, translocation are supported by pairs of reads mapped far from each other.
+When one read of the pair spans a repeat, it is sometimes aligned to another repeat element in the genome, far from its paired read.
+To minimize this issue, read aligners could favor configurations where both pairs map together but forcing read pairs to map together would impair the detection of real variants.
+In practice, some aligners output the best alignment as well as other secondary alignments where the reads could have originated from.
+This multi-mapping information or other mapping metrics are used by SV callers to identify legitimate variants or flag others that could be caused by mapping confusion.
+Nonetheless, even with paired-end aware mappers many reads overlapping repeats show this incorrect mapping and can hinder SV calling.
+Because a low-mappability sequence highly resembles another sequence in the genome, a variant or a sequencing error in the read might lead to a better (although incorrect) mapping in the incorrect location.
+This multi-mapping confusion can also occur locally and incorrectly support other types of SVs such as deletion and tandem duplications.
+
+To minimize the effect of multi-mapping, algorithms tend to use uniquely mapped reads only.
+Fewer reads support the presence of a variant but they are of better quality.
+In some cases, repeats flank a unique region and can mask potential CNVs from paired-end or split-read approaches that use uniquely mapped reads only.
+Indeed, because of the repeats, reads around the breakpoints that would support the CNV don't map uniquely. 
+If the flanking repeats are long and highly similar, these CNVs can only be detected by changes in the read coverage.
+
+\subsection{Tackling the Repeat Challenge}
+\label{sec:repmeth}
+
+Because of the mappability and other technical biases, existing approaches suffer from limited specificity and sensitivity\cite{Mills2011,Alkan2011}, especially in specific regions of the genome, including regions of low-complexity and low-mappability\cite{Treangen2011,Teo2012}.
+
+Approaches that use paired-read information and split-read mapping are difficult to modify to deal with the presence of repeats.
+Oftentimes, repeated regions or low-confidence mapping are simply filtered (or flagged) when calling SVs.
+The integration of the multi-mapping information could always be improved but the mapping patterns are often region-specific and difficult to model.
+Despite the challenges, some attempts were made for specific types of variants.
+For example, \citet{Hormozdiari2010} modeled transposon insertion and \citet{He2011} proposed a way to handle the multi-mapped reads when searching for tandem duplication.
+
+Approaches relying on read coverage are relatively more robust because they use signal across the whole variant rather than the breakpoint regions.
+A deletion or duplication between repeated sequences might be difficult to call confidently using paired-end or split-read information but the change in RD across a variant is less affected by repeats around the breakpoints.
+The presence of repeats along the entire variant still remains a challenge for RD approaches.
+To deal with regions of high repeat content, repeats were originally masked before CNV detection to avoid problems from multi-mapping of the sequencing reads\cite{Alkan2009,Sudmant2010a}.
+Another approach used bins of variable length designed specifically to provide uniform coverage of uniquely mapped reads across the genome\cite{cam2008ide}.
+For example, a region with repeats was extended as much as necessary to contain, on average, a similar read coverage as in unique regions.
+While it simplified the methodology of the CNV calling, it was not ideal.
+First, repeat-rich regions often remained problematic and were still specifically filtered out of the output.
+Indeed, repeat-rich regions are not only less covered by uniquely-mapped reads but also more variable.
+The variable-length bin design adjusted the mean read coverage but the repeat-rich regions remained more variable and challenging for most segmentation approaches.
+Second, the contribution of the repeat-rich regions in the extended bin becomes minimal because of their low coverage.
+The repeats are not masked but they are not represented by the RD of these regions either.
+Although it helps mitigate the effect of repeats, it doesn't help address variation in repeat-rich regions.
+
+Other methods keeps repeats unmasked and use bins of equal size but transform the coverage signal to reduce the unwanted effect in repeat-rich regions.
+For example, {\sf CNAseg}\cite{Ivakhno2010} and {\sf CNVnator}\cite{Abyzov2011} use a smoothing step that reduce the effect of outliers and smooth the signal using flanking regions.
+Similar to the variable-length bin strategy, the signal in the repeat regions is traded off for a easier calling and segmentation.
+After smoothing, CNVs in repeat-rich regions but also small CNVs might become invisible.
+
+In an attempt to tackle the problem at its roots, Alkan et al. developed a read aligner to better deal with reads mapping to several locations in the genome\cite{Alkan2009}.
+Using {\sf mrFAST} they were able to better detect and genotype copy-number variants in some large and highly similar segmental duplication.
+They showed that alignment could be improved for many segmental duplications regions to the point where accurate CNV detection was possible.
+However, this effort cannot be replicated for the vast majority of the repeat-rich regions of the human genome.
+Alignment algorithms performance in low-mappability regions are now mainly limited by the size of the sequencing reads.
+
+
+\subsection{Disease-Associated CNV in Repeats}
+
+CAG repeat expansion in a coding region of the {\it HTT} gene causes Huntington disease in a dominant and fully penetrant manner\cite{MacDonald1993,Andrew1993}.
+When the short tandem repeat is large enough, typically larger than 36 units, the mutant protein is responsible for an increase in the decay rate of neurons.
+Fragile X syndrome is caused by the expansion of a CGG repeat in the 5' untranslated region of the {\it FMR1} gene\cite{Verkerk1991}.
+\begin{comment}
+  Fragile X syndrome causes Mental Retardation.
+\end{comment}
+The length of the repeat varies from 15 to 60bp (20 units) in the healthy population while repeats larger than 600 bp cause the disease.
+Repeats with intermediate size increase the disease risk for the offsprings.
+ICF syndrome (Immunodeficiency, Centromeric instability and Facial anomalies) is characterized by an extension of pericentromeric satellites.
+\begin{comment}
+  Hypomethylation of these satellites is thought to be the cause for this instability on chromosome 1, 9 and 16\cite{Jeanpierre1993}.
+\end{comment}
+Facioscapulohumeral muscular dystrophy was associated to the contraction of a satellite DNA in the sub-telomeric region of chromosome 4\cite{Rich2014}.
+\begin{comment}
+  Healthy individuals have 11-150 units while disease have 1-10 (no repeat doesn't cause the disease).
+  D4Z4 repeats is 3303 bp long and contains an ORF (1173 bp) with 2 homeobox domains.
+\end{comment}
+
+CNVs involving repeats are also widespread in cancers.
+L1 retrotransposition is a common phenomenon in some cancer types such as epithelial tumors\cite{Lee2012b,Tubio2014,Burns2017}.
+The first instance of disruptive insertion was documented in the tumor suppressor gene {\it APC} in colon cancer\cite{Miki1992}.
+Microsatellite instability is important in some cancers, such as colorectal and endometrial cancers, and usually coincides with the disruption of DNA repair mechanisms\cite{Kim2013}.
+It results in extensive copy number changes in microsatellites.
+In colorectal cancers, micro-satellite instability is typical of a specific sub-group, Lynch syndrome, representing around 15\% of cases and associated with better prognosis\cite{DelaChapelle2010}.
+Fragile sites are also enriched in somatic SVs.
+Furthermore, fragile sites are often unstable in cancer and are enriched in low-complexity sequences and satellites\cite{Fungtammasan2012,Durkin2007}.
+Transposable elements tend to cluster in these regions as well, sometimes taking advantage of the DNA breaks to insert new copies.
+Satellite instability and increased retrotransposition suggest that repeated region might be more fragile or more variable than in normal genomes.
+
+In addition to variation in the repeat sequence, some repeated regions favor the formation of CNVs.
+For instance, segmental duplications and TEs provide templates for NAHR.
+Alu or L1 elements are the most abundant and most frequent templates.
+Alu-mediated deletions in the {\it LDLR} gene were among the first to be described in a patient with familial hypercholesterolemia\cite{Lehrman1985}.
+A recombination event between HERV-I copies has been linked to male infertility by causing a $\sim$800 Kbp deletions containing the azoospermia factor gene on chromosome Y\cite{Sun2000}.
+\begin{comment}
+  \citet{Sanchez-Valle2010} describe another example of HERV-mediated deletion associated with a disease, namely branchio-oto-renal syndrome caused by deletions in the eye absent homologue 1 gene ({\it EYA1}).
+\end{comment}
+Cancer genes such as {\it MLL-1}, {\it VHL} and {\it BRCA1} seem to be experiencing CNVs resulting from NAHR between Alu elements\cite{Belancio2009}.
+\begin{comment}
+  For example, Alu-mediated NAHR often creates tandem duplication of the {\it MLL} gene in acute myeloid leukemia.
+\end{comment}
+Alu-mediated recombinations around {\it MSH2} are responsible for germline deletions that have been linked to susceptibility to hereditary nonpolyposis colon cancer\cite{Li2006}.
+CNV can be a byproduct of TE insertion as well. 
+For example, the insertion of a L1 lead to a 46 Kbp long pathogenic deletion in the {\it PDHX} gene in an individual suffering from PDHc deficiency\cite{Mine2007}.
+\begin{comment}
+  Pyruvate dehydrogenase complex deficiency is one of the most common neurodegenerative disorders associated with abnormal mitochondrial metabolism. 
+  Pyruvate dehydrogenase deficiency which results in neurological dysfunction and lactic acidosis in infancy and early childhood.
+  PDHc deficiency often leads to Leigh disease.
+\end{comment}
+
+
+\section{CNV Distribution in Normal Genomes}
+
+In healthy individuals, a higher proportion of the genome is estimated to be affected by SVs as compared to single nucleotide polymorphisms (SNPs)\cite{Pang2010}.
+Several databases and studies have cataloged CNVs in the human genome and described their distribution.
+The CNV enrichment in segmental duplications has been extensively documented.
+
+\subsection{Public CNV Catalogs}
+%% DGV catalog is good but difficult to assess the frequency
+The long-standing database for structural variation in healthy individuals is most likely the Database of Genomic Variants (DGV).
+It aggregates findings from more than 55 studies and annotates more than 200,000 different regions \cite{Zarrei2015}.
+Although it represents the largest aggregation of variants, DGV should be used carefully.
+For example, the variant information, such as frequency, breakpoint resolution or genotype comes from each original study and might not be directly comparable.
+Variant frequency is particularly important for disease studies but the frequency in DGV might not be representative of the population frequencies.
+Indeed, the different studies used different technologies, some of which might not have the resolution to detect a variant of interest.
+The low sample size of some studies might also inflate the frequency estimates.
+
+A few studies using aCGH across hundreds of healthy individuals provided a more representative distribution of large CNVs in the population.
+Redon et al. found that a larger than expected fraction of the genome was affected by CNVs, cumulatively affecting more bases than single nucleotide polymorphisms\cite{Redon2006}.
+They described CNVs across four human populations and their overlap with genes, disease loci, functional elements and segmental duplications.
+Using arrays with higher density and a larger sample size, Conrad et al. described similar patterns for common and rare CNVs in the human genome\cite{Conrad2010}.
+
+Using high-throughput sequencing, large-scale projects were able to catalog unbalanced types of SVs and CNVs at a better resolution.
+The 1000 Genomes Project was the first to produce such a catalog, analyzing 179 individuals across 4 human populations\cite{Mills2011}.
+Its most recent catalog\cite{Handsaker2015} analyzed 2,504 individuals from 26 populations and contains 42,279 deletions, 6,025 duplications, 16,631 mobile element insertions and hundreds of other SVs types such as inversions and translocations.
+In this project, nine different methods were combined in an ensemble approach in order to detect different types of variants and increase the confidence of each call.
+Extensive low-throughput validation was used to decide how to combine the output of the different methods and ensure high quality calls.
+Such a strategy increases the specificity of the variant detection but is less sensitive.
+In order to study a large number of individuals in a cost-effective manner, the sequencing depth of most experiments was kept low, around 7x.
+With these settings, the frequency estimates of the variants that could be detected are accurate but some types of variants might have been missed, for example rare variants, small CNVs or variants in low-mappability regions.
+In this study, as in many others, repeat-rich regions and other problematic regions were masked or smoothed at some step of the analysis to produce more accurate calls.
+In a follow-up study on the 1000 Genomes Project data, \citet{Handsaker2015} studied the allele distribution of multi-copies CNVs across individuals.
+They identified 185 genes which overlapped with CNVs that were present in more than two copies in most of the individuals.
+They also describe variants that show specific distribution patterns in the African population, possibly because of different evolutionary constraints.
+A similar ensemble approach was used by the Genome of Netherlands (GoNL) consortium to analyze 750 individuals sequenced with medium depth of 13x\cite{Francioli2014}.
+10 methods were combined and provided a SV and CNV catalog of the Dutch population.
+
+Recently, long-read sequencing in on haploid cell lines\cite{Chaisson2014} and a diploid human sample\cite{Pendleton2015} provided a better survey of SV across the genome.
+Challenging repeats are more often spanned by the long reads and many low-mappability regions could be analyzed.
+Due to its higher cost, few genomes have been sequenced yet.
+Nonetheless, a large fraction of the SV identified were novel.
+As expected, most of the novel variants were located in regions of low-mappability.
+Although devoid of population estimates, these catalogs contains hundreds of SV in low-mappability regions.
+
+
+\subsection{Enrichment in Segmental Duplication}
+
+The enrichment of CNVs in segmental duplication has been described early on in the first genome-wide array-based surveys\cite{Iafrate2004,Sebat2004}.
+\citet{Redon2006} found that 24\% of the 1,447 CNVs identified overlapped with segmental duplications.
+\citet{Wong2007} noted a 5.7-fold enrichment of common CNVs in segmental duplications.
+Around 50\% of the annotated segmental duplications are covered by CNVs in the Database of Genomic Variants\cite{Zarrei2015}.
+Segmental duplications cover only $\sim$5.8\% of the reference genome and the enrichment of CNVs has been replicated over the years with different technologies and resolution\cite{Mills2011,Chaisson2014,Alkan2009}.
+
+Several CNV hotspots are also located within segmental duplications\cite{Itsara2009}.
+These regions rearranged during recent human evolution and continue to experience copy number changes.
+Some of these hotspots, for example 15q13.3, 16p11.2 or 1q21.1, have been associated with diseases, particularly neurological disorders\cite{Mefford2009}.
+
+What creates this enrichment?
+As mentioned earlier segmental duplications are often templates for NAHR.
+Some segmental duplications might not be fixed yet and remain polymorphic in the population.
+Segmental duplications might also be more permeable to variation in general, as suggested by the higher substitution rate\cite{She2006}.
+These regions might also be more fragile, i.e. more likely to experience DNA breaks that could then lead to SV.
+
+
+\section{CNV in Neurological Disorders and Epilepsy}
+
+\subsection{CNV and Neurological Disorders}
+% SV hotspots and neurological disorders
+As mentioned previously, segmental duplications tend to sensitize some genomic regions to deletions and duplications, forming CNV hotspots regions.
+A subset of these hotspots have been associated with a number of neurological disorders such as autism, mental retardation, schizophrenia and epilepsy.
+In general, the affected genomic regions is unique, spans 50 Kbp to 10 Mbp and is flanked by long ($>$10 Kbp) and highly homologous ($>$95\%) segmental duplications.
+For example, 16p11.2, 1q21.1 and 15q13.3 CNV hotspots have all been associated with autism, mental retardation and epilepsy\cite{Mefford2009}.
+
+An interesting case was described by Koolen et al. and involved an inversion that ``activates'' a CNV hotspot\cite{Koolen2006}.
+In an aCGH screen, \citet{Koolen2006} identified recurrent {\it de novo} deletions in 17q21.31 in cases with mental retardation but not in controls.
+The region was flanked by inverted segmental duplications and an inversion needed to happen first in order to promote a NAHR-mediated deletion.
+The corresponding 900 Kbp inversion is present in around 20\% of Europeans and predispose carrier for the deletion associated with mental retardation.
+
+% Rare large CNVs
+Rare CNVs, particularly deletions larger than 1 Mbp, have been associated in a number of neurological disorders.
+Early on, mental retardation and other developmental delay disorders have been linked to large CNVs which could explain $>$15\% of the cases\cite{Mefford2009}.
+In schizophrenia, rare genic CNVs larger than 100 Kbp were present in 15\% of cases, 3 times mores than in controls\cite{Walsh2008}.
+\begin{comment}
+  This study used aCGH on 150 cases and 268 ancestry-matched controls defining novel/rare CNVs if absent from DGV.
+  The association was replicated in another cohort with early onset schizophrenia.
+  Overall they saw no difference in burden for common CNVs ($>$1\%).
+\end{comment}
+{\it de novo} CNVs were significantly associated with autism in a cohort of 118 patients and 196 controls\cite{Sebat2007}.
+10\% of the patients with sporadic autism had a {\it de novo} CNV versus only 1\% of the controls.
+\begin{comment}
+  {\it de novo} CNV candidates were selected if present in the proband but not in all the parents in the cohort.
+  {\it de novo} candidates were thoroughly investigated to ensure that parents were not carrier, correct paternity, no platform or DNA protocol effect.
+\end{comment}
+In a large cohort of 996 individuals with autism spectrum disorder, \citet{Pinto2010} observed a higher burden of rare genic CNVs.
+\begin{comment}
+  They found a 1.19 fold enrichment compared to their 1,287 matched controls.
+  Several {\it de novo} and inherited variants were used to identify new candidate genes.
+\end{comment}
+
+
+\subsection{CNV and Epilepsy}
+
+% Epilepsy, the disease
+Epilepsy is a neurological disease characterized by seizures. 
+It has a prevalence of ~1\% in the population, and a lifetime incidence up to 3\%.
+The phenotypes of epilepsy can be complex, and there are several types of epilepsy.
+In {\it generalized} epilepsy, sometimes called idiopathic or primary generalized epilepsy, the seizures affect the whole brain.
+{\it Absence} epilepsy, a sub-type of generalized epilepsy, is characterized by brief loss and return of consciousness.
+In contrast, patients with {\it focal} or partial epilepsy experience partial motor seizures.
+Focal seizures are more prevalent in children and teens and occur mostly during sleep.
+In the case of {\it epileptic encephalopathy}, affected individuals also exhibit severe cognitive and behavioral disturbances.
+% Epileptic encephalopathies are the most devastating group of epilepsy.
+
+% Genetic component
+Both familial and sporadic cases of epilepsy seem to have a genetic component.
+% GWAS heritability, {\it de novo} SNVs etc
+The vast majority of the genetic variants associated with epilepsy comes from studies on one or just a few cases.
+Aggregating information across 818 studies, \citet{Ran2015} compiled a list of genes associated with epilepsy.
+154 high-confidence genes were identified from the recurrence and predicted impact of more than 3931 variants.
+For a gene to be included in the list, several losses of function and/or {\it de novo} variants had to be described in the literature.
+
+% Challenges
+As in other neurological diseases, the phenotypic heterogeneity remains a challenge when combining cases into large studies.
+In addition, incomplete penetrance or variable expressivity have been observed and complicates the identification of genes and pathogenic variants.
+Even in locus that are clearly associated with epilepsy risk, there are examples of unaffected carrier parents while other times, the same single-gene mutation can cause a wide range of seizure types\cite{Mefford2010}.
+
+% Recurrent CNVs
+Recurrent microdeletions were identified in up to 3\% of patients with idiopathic generalized epilepsies and in 1\% of focal epilepsies\cite{Helbig2014}.
+In Heinzen at al., 15q13.3 and 16p13.11 were the CNV hotspots with the most frequent microdeletions\cite{Heinzen2010}.
+These variants were often transmitted from a healthy parent.
+Another study of 517 individuals with mixed types of epilepsy revealed that 2.9\% of the patients had a deletion in the 15q11.2, 15q33.3 or 16.q13.11 hotspots\cite{Mefford2010}.
+In \citet{Mefford2011}, 315 patients with epileptic encephalopathy were also screened with aCGH, of which 1.6\% had a CNVs in 16p11.2, 22q11 and 15q13.3 hotspots.
+
+% Rare CNVs
+In addition to CNVs in hotspot regions, several studies observed a significantly higher number of rare large CNVs in epilepsy patients.
+In the discussion, \citet{Mefford2011} mentioned a significant excess of large deletions in their cohort compared to the controls.
+2.2\% of the patients had rare CNVs larger than 1 Mbp while only 0.3\% of the controls.
+However, the controls came from two independent studies that used different arrays. % How many probes.
+Using epilepsy cases and matched controls, \citet{Striano2012} found no difference in term of number of rare CNVs between epilepsy patients and controls but that CNVs were significantly larger and affected more genes in the epilepsy patients.
+Other studies of CNV in epilepsy tend to focus on rare CNVs in the cases and only use controls to filter variants.
+Using this approach, up to 10\% of epilepsy patients carry a unique and possibly pathogenic CNV.
+This numbers varies depending on the type of epilepsy studied and the additional criteria used to filter CNVs (Table \ref{tab:epicnvlit}).
+In \citet{Mefford2010}, 8.9\% of the 517 patients with generalized and focal epilepsies had one or more rare genic CNVs that was absent from their 2493 controls. % Good controls ?
+A similar study on epileptic encephalopathy found that 7.9\% of the 315 patients had a rare genic CNV never seen in 4,519 controls, half of which were classified as pathogenic or likely pathogenic\cite{Mefford2011}.
+Deletions of known epilepsy genes or {\it de novo} deletions were considered pathogenic while {\it de novo} duplications and CNVs larger than 1 Mbp were considered likely pathogenic.
+In a more clinical setting, CNVs detected from aCGH could explain the phenotype of 5\% of the 805 epilepsy patients screened\cite{Olson2014}.
+The pathogenicity of the variants were assessed by clinicians based on the size, inheritance, gene, hotspot overlap and concordance between the clinical symptoms and the ones reported in the relevant literature.
+Another study on childhood epilepsies identified a large rare CNV in 71 patients out of 222, 33 of which were considered pathogenic or likely pathogenic based on the inheritance pattern or overlap with known pathogenic variants\cite{Helbig2014}.
+{\it de novo} variant are often of interest and 11 {\it de novo} CNV were identified in this study.
+All four variants larger than 3 Mb were {\it de novo} CNVs.
+More recently, the exome of 349 trios with epileptic encephalopathy identified 18 {\it de novo} CNVs in 17 patients (4.8\%), 10 of which were classified as likely pathogenic\cite{Mefford2015}.
+
+\begin{table}[ht]
+  \centering
+  \resizebox{1\textwidth}{!}{
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+      \multirow{2}{*}{Study}     & \multirow{2}{*}{Epilepsy type} & \multirow{2}{*}{rare CNVs} & CNVs in  & Sample & \multirow{2}{*}{CNV size} & \multirow{2}{*}{Filters}        \\
+                                 &                                &                            & hotspots & size   &                           &                                 \\
+      \hline
+      \citet{Mefford2010} (2010) & generalized \& focal           & 8.9\%                      & 2.9\%    & 517    & 1.2 Mbp                   & rare genic                      \\
+      \citet{Mefford2011} (2011) & epileptic encephalopathy       & 7.9\%                      & 1.6\%    & 315    & 2.26 Mbp                  & rare genic                      \\
+      \citet{Striano2012} (2012) & generalized \& focal           & 9.3\%                      & 3.4\%    & 265    & 1.9 Mbp                   & rare                            \\
+      \citet{Olson2014} (2014)   & clinical epilepsy              & 5\% pathogenic             & 2.9\%    & 805    & 18 Kbp - 142 Mbp          & -                               \\
+      \citet{Helbig2014} (2014)  & childhood                      & 31.9\%                     & 4.9\%    & 222    & 102 Kbp - 12.7 Mbp        & rare genic $>$100 Kbp           \\
+      \citet{Mefford2015} (2015) & epileptic encephalopathy       & 4.8\% {\it de novo}              & -        & 349    & 377 Kbp                   & rare                            \\
+      \citet{Addis2016} (2016)   & absence                        & 10.4\%                     & 2.8\%    & 144    & 26 Kbp - 2.8 Mbp          & rare genic $>$20 Kbp \\
+    \end{tabular}
+  }
+  \caption[CNV surveys of epilepsy patients]{{\bf CNV surveys of epilepsy patients.} {\small The second and third columns represent the proportion of cases with a rare CNVs or a CNV in a known hotspot region, respectively. The {\it Sample size} represents the number of epilepsy cases in each study. The {\it CNV size} shows the average size of the CNVs detected (or the size range).}}
+  \label{tab:epicnvlit}
+\end{table}
+
+
+
+\section{Somatic CNV in Cancers}
+
+\subsection{Methodological Challenges}
+
+Contamination of a sequenced tumor by normal cells reduces the strength of the signal from somatic variants.
+For CNV, the copy number changes seem only partial because only a fraction of the cells share the variant.
+Cellular heterogeneity further reduces the strength of the CNV signal for the same reason.
+Hence, if the purity is too low or the somatic variant is present in a minor clone, the signal-to-noise ratio is reduced compared to germline variants.
+A higher ploidy can also result in a weaker CNV signal.
+For example after genome doubling, a one-copy deletion corresponds to a reduction of one quarter of the average coverage.
+
+One strategy is to estimate the purity and ploidy in the sample before or at the same time as the CNV calling.
+Using information about the coverage deviation and B-allele frequency changes, methods such as {\sf Sequenza}\cite{Favero2015} and {\sf TITAN}\cite{Ha2014} can predict the most likely ploidy and purity of the tumor sample and adjust copy number estimates.
+{\sf TITAN} further model cell heterogeneity in the tumor cells by testing the presence of minor clones with CNV signatures.
+
+
+\subsection{Chromosomal Aberrations and Aneuploidy}
+\label{sec:canceraneu}
+Somatic CNVs (sCNVs) are common in tumors from almost all cancer types\cite{Beroukhim2010,Zack2013}. 
+Tumors sometimes harbor whole-genome doubling or, more frequently, chromosome arm-level gains or losses.
+Aneuploidy, i.e. chromosome gain or loss, is seen in almost all cancer types although at varying frequencies\cite{Zack2013,Baudis2007,Kim2013b}.
+
+Aggregating aCGH data across 5,918 epithelial tumors, \citet{Baudis2007} identified frequent arm-level gains in 8q, 20q, 1q, 3q, 5p, 7q and 17q; and frequent losses in 3p, 4q, 13q, 17p and 18q.
+The median number of arm-level aberration per sample ranged from 0 in squamous skin neoplasias to 12 in small cell lung carcinomas\cite{Baudis2007}.
+To further interrogate the distribution of somatic CNVs in different types of cancer, \citet{Beroukhim2010} analyzed 3,131 cancer genomes from 26 different cancer types.
+Although the frequency of sCNV decreases with their size, arm-level aberrations stood out as recurrent aberrations for both losses and gains and across all 26 cancer types studied.
+Arm-level aberrations were around 30 times more frequent than expected from the frequency-size relationship of other sCNVs.
+In this pan-cancer survey, 25\% of a typical cancer genome was affected by arm-level sCNVs.
+In contrast to some focal sCNVs, arm-level sCNVs resulted in low-amplitude changes, most of the time a single copy loss/gain.
+Interestingly, it appeared that chromosome arms had either somatic losses or gains, but rarely both.
+Similar observations were made in a larger meta-analysis of 8,227 cancer CNV profiles from 107 aCGH studies\cite{Kim2013b}.
+Chromosome arms preferentially showed losses or gains, with 1q, 5p, 7p, 3q and 20q most frequently gained and 4q, 6q, 8p, 13q and 17p most frequently lost.
+Cancer types were clustered based on their arm-level aberration frequencies and formed three groups with similar developmental origins.
+\begin{comment}
+  Five cancer of hematologic-origin clustered together; most of the epithelial cancers formed the second cluster; the third cluster contained four neuroepithelial cancers as well as sarcoma and RCC.
+\end{comment}
+Arm-level aberrations in gene-rich arms tended to co-occur when concordant (gain-gain, loss-loss)\cite{Kim2013b}.
+Using a single detection platform across 4,934 cancers and 11 cancer types, The Cancer Genome Atlas attempted to time the occurrence of different types of sCNVs\cite{Zack2013}.
+For example, whole-genome doubling was observed in 37\% of the tumors and tended to occur prior to other types of sCNVs.
+The rate of both arm-level and focal sCNVs were higher in tumor that experienced whole-genome doubling.
+In term of arm-level aberrations, \citet{Zack2013} found a median of 3 gains and 5 losses per tumor.
+
+Some arm-level aberrations have been linked to worse prognosis\cite{Jen1994,Roy2016}.
+In some cases, the arm-level is thought to directly affect cancer drivers.
+For example, the frequent loss of chromosome 9p is associated with more aggressive tumors and poor survival through down-regulation of tumor suppressors\cite{Roy2016}.
+\begin{comment}
+  Loss of chromosome 9p is associated with poor prognosis across many cancers although the identification of driver genes was performed on low-grade gliomas.
+\end{comment}
+These aberrations can also be used as markers for prognosis prediction.
+
+The pan-cancer studies described above didn't include or comment on sex chromosomes in their analysis\cite{Beroukhim2010,Zack2013,Baudis2007,Kim2013b}.
+
+
+
+\subsection{Gender Imbalance}
+
+According to cancer statistics for 2017, the lifetime probability to be diagnosed with invasive cancer is 40.8\% for men and 37.5\% for women\cite{Siegel2017}.
+Several cancer types show the same gender imbalance with different incidences for males and females.
+For example, incidence of liver cancer is three times higher in men than in women, and even more for esophagus, larynx and bladder cancers.
+In contrast, the incidence is higher in women for cancers of the thyroid, anus and gallbladder.
+Of note, differences in incidence rates do not always translate in differences in death rates.
+Conversely, death rates in males and females can be very different despite similar incidence rates.
+Although the death rates are comparable, thyroid cancer incidence is three times higher in women.
+Some evidence suggests that the overdiagnosis rate is higher in women resulting in more nonfatal tumors diagnosed in women\cite{OGrady2015}.
+\begin{comment}
+  In their study of papillary thyroid cancer, \citet{OGrady2015} compared the stage at diagnosis (based on the tumor size) and estimated that 5.5\% of male cases versus 41.1\% of female cases were due to overdiagnosis in individuals ages 20 to 49.
+  This could be explained by the fact that women tend to spend more in healthcare and more likely to report illness symptoms and seek medical care.
+\end{comment}
+The death rates of melanoma are more than double in male compared to female but the incidence rate is only 60\% higher\cite{Siegel2017}.
+The sex disparities in survival rates is partly explained by the younger age at diagnosis for women but is still present when controlling for known factors\cite{Scoggins2006}.
+\begin{comment}
+  After sentinel lymph node biopsies, the survival was compared for different factors such as age, ulceration, thickness, sentinel lymph node.
+\end{comment}
+In general, the earlier diagnosis of cancer in women could contribute to the lower overall death rates.
+
+Difference in height might contribute, to some extent, to gender disparities in cancer incidence.
+Indeed, height has been positively associated with cancer incidence and death in both men and women\cite{Wiren2014}.
+This suggests that hormonal and genetics factors associated to height might be involved in cancer development and progression.
+A study by Walter et al. tested how much height could explain the gender differences in cancer risk and found that around a third of the excess risk for men was explained by height differences\cite{Walter2013}.
+\begin{comment}
+  But taller people may simply have more cells, or it may be that many determinants of growth during normal development (perhaps including {\it IGF-1}) also have general effects on tumor growth.
+\end{comment}
+Prognosis in childhood cancers is also worse in males than females, suggesting the presence of non-hormonal factors\cite{Eden2000}.
+
+Some imbalances could be explained by mutations in the sex chromosomes.
+Chromosome X hosts several tumor suppressor genes such as {\it UTX} ({\it KDM6A}), {\it ZMYM3}, {\it AMER1} (also known as {\it WTX}), {\it KDM5C}.
+{\it KDM6A} has a homolog gene in chromosome Y, {\it KDM6C}.
+Loss of chromosome Y (LOY) was observed in a number of cancers that are more prevalent in males, such as prostate, bladder or liver cancers\cite{Konig1996,Sauter1995,Park2006}.
+
+\subsection{Clear Cell Renal Cell Carcinoma}
+
+Each year, more than 330,000 cases of kidney cancer are diagnosed in the world and over 140,000 deaths are caused by this cancer\cite{Ferlay2015}.
+\begin{comment}
+  Kidney cancer accounts for 2.4\% of all adult cancers and over 140,000 deaths annually (GLOBOCAN 2012 v1.0, Cancer Incidence and Mortality Worldwide: IARC CancerBase No. 11 [Internet]. (International Agency for Research on Cancer; 2013), Available from http://globocan.iarc.fr, accessed on 5 February (2014).)
+\end{comment}
+Most of the kidney cancers start in the cells that line the renal tubules and are called renal cell carcinoma (RCC).
+\begin{comment}
+  Tubule are the part of the nephron (~1M per kidney) that contains the fluid filtered by upstream by the renal corpuscle
+  Other types of kidney cancers: Wilms' tumor (nephroblastoma, abnormal proliferation of cells that resemble the kidney cells of an embryo), Clear cell sarcoma of kidney (starts in the connective tissues or blood vessels).
+\end{comment}
+90\% of kidney cancer cases are RCCs, of which 60-80\% are clear cell RCCs (ccRCCs).
+\begin{comment}
+  Recognized environmental and lifestyle risk factors for RCC include tobacco smoking, excess body weight and hypertension, as well as a history of chronic kidney diseases.
+\end{comment}
+Cigarette smoking, increased body mass index and hypertension are risk factor for RCC\cite{Chow2000}.
+\begin{comment}
+  Cigarette smoking is a risk factor and associated with cancer stage.
+  Increased body mass index is also an independent risk factor for RCC, while hypertension doubles the risk of RCC.  
+\end{comment}
+As mentioned previously, kidney cancer incidence is higher for males than females, with a ratio around 2:1.
+Although factors such as tobacco smoking and hypertension might partly explain the gender disparities, the increased incidence in males is not fully understood.
+
+Recent studies characterized the genomic landscape of ccRCC using exome\cite{Sato2013} or whole genome sequencing\cite{Scelo2014} and methylation arrays\cite{Sato2013}.
+The von Hippel–Lindau tumor suppressor gene ({\it VHL}) had been previously identified as an important driver gene with somatic point mutations or epigenetic changes present in around 80\% of ccRCC\cite{Latif1993,Banks2006}.
+Furthermore, the small arm of chromosome 3, in which {\it VHL} is located, is lost in about 90\% of ccRCC tumors\cite{Frew2015}.
+To a lower extent, {\it PBRM1}, {\it SETD2} and {\it BAP1} genes in chromosome 3 further harbored recurrent somatic point mutations\cite{Benusiglio2015,Carvalho2014,Popova2013}.
+Other frequent arm-level aberrations include 7 or 5q gains and losses of 6q, 8p and 14q\cite{Baudis2007,Frew2015,Ito2016}.
+Recurrent somatic mutations in the {\it KDM5C} gene result in deregulation of H3K4 methylation which promotes genomic instability in ccRCC\cite{Scelo2014,Dalgliesh2010}.
+
+
+The {\it KDM6A} gene encodes a histone demethylase and is also recurrently mutated in ccRCC\cite{Dalgliesh2010}.
+Like the {\it SETD2} gene, the {\it KDM5C} and {\it KDM6A} genes encode histone modifiers, highlighting the importance of epigenetic regulation in this type of cancer.
+As mentioned before, both these genes are located on chromosome X and might contribute to the gender disparities in incidence rates.
+
+
+
+\section{Hypothesis and Objectives}
+
+Technical variation in whole-genome sequencing data hinders the detection of challenging genomic variants such as somatic alterations in cancer, small CNVs and variation in low-mappability regions.
+These classes of variants are challenging to detect because the strength of the supporting signal is often comparable to technical noise.
+Although some corrections exists in order to minimize the known biases or mask the effects of repeats, technical bias remains.
+Moreover, repeat-rich regions are often discarded by existing methods, explaining their absence from public CNV databases.
+Current methods either analyze one genome at a time or pool several genomes to aggregate evidence rather than to control for technical variation.
+\medskip
+
+We hypothesize that using a set of samples as reference to define and identify abnormal read coverage could increase the resolution at which CNV can be detected.
+We speculate that using large datasets could bypass the need to identify unknown biases in WGS data and provide a useful baseline for read coverage without modeling complex repeat structures.
+In addition to the benefits in term of sensitivity, population-based approaches could also address variation in repeat-rich regions.
+\medskip
+
+The primary objective of this work is to demonstrate the power of population-based approaches to detect CNV.
+Thus, the same original idea of using reference samples to correct for technical bias was applied to three studies, each addressing one of the following objectives.
+The first objective was to show how using reference samples could help identify somatic arm-level CNVs, even if present in only a fraction of the tumor cells sequenced.
+After variant detection, the goal was to describe the prevalence of somatic loss of chromosome Y in kidney cancer in the context of other arm-level aberrations.
+The second objective was to extend this approach to the detection of CNV in small genomic regions.
+If the population-based approach was successful for large somatic CNVs, we aimed at proving that a similar method could improve the detection of small germline CNVs.
+Once implemented and validated, we applied the method to a disease study of 198 epilepsy patients and 301 controls with the objective of test the importance of small CNVs as genetic factors of epilepsy.
+Finally, the last objective was to use this method to investigate CNV in low-mappability regions.
+Thanks to its robustness to technical variation, our population-based method was tested and validated on different repeat profiles before being used to detect CNVs across 640 genomes of healthy individuals.
+The goal here was to produce a genome-wide CNV catalog that was more representative by including low-mappability regions and to investigate the enrichment of different repeat families with CNV.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

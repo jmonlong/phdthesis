@@ -1,0 +1,393 @@
+% \begin{filecontents*}{\jobname.xmpdata}
+% \Title{Population-Based Approaches to Characterize Copy Number Variation from Whole-Genome Sequencing in Healthy Individuals and Disease Cohorts}
+% \Author{Jean Monlong}
+% \Keywords{copy-number variation\sep genomics\sep human genetics\sep whole-genome sequencing\sep sequencing}
+% \setRGBcolorprofile{sRGB_IEC61966-2-1_black_scaled.icc}{sRGB_IEC61966-2-1_black_scaled}{sRGB IEC61966 v2.1 with black scaling}{http://www.color.org}
+% \gdef\ColorProfileDir{/Library/Application Support/Adobe/Color/Profiles/Recommended/}
+% \FOGRAXXXIX
+% \end{filecontents*}
+\documentclass[12pt]{report}
+
+% \usepackage[a-1b]{pdfx}   % for PDF/A-1b
+% \usepackage{hyperref}
+%%%% OR
+\usepackage[pdfauthor={Jean Monlong},pdftitle={Population-Based Approaches to Characterize Copy Number Variation from Whole-Genome Sequencing in Healthy Individuals and Disease Cohorts},pdfsubject={Ph.D. Thesis, Human Genetics Dept., McGill University},pdfkeywords={copy-number variation; genomics; human genetics; whole-genome sequencing; sequencing},pdfproducer={LaTeX},pdfcreator={pdflatex}]{hyperref}
+
+\usepackage[utf8]{inputenc}
+% \usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!70!black},
+    citecolor={blue!40!black},
+    urlcolor={magenta!80!black}
+}
+
+\usepackage{doi}
+% \usepackage{authblk}
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{rotating}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{float}
+%% \graphicspath{ {imgs/} }
+
+%% Bibliography
+\usepackage[comma,super]{natbib}
+%\usepackage[round,authoryear]{natbib}
+% \bibpunct{}{}{;}{a}{,}{,}
+\renewcommand{\cite}{\citep}
+
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+% \fancyhead[RO,LE]{\leftmark}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[LO,CE]{Chapter \thechapter}
+%\fancyfoot[CO,RE]{Jean Monlong}
+\usepackage{setspace}
+%% \linespread{1.6}
+
+%% Table of contents config
+\usepackage{tocbibind}
+\setcounter{tocdepth}{2}
+%% Space between number and title in list of figures/tables.
+\usepackage{tocloft}
+\setlength{\cftfignumwidth}{3em}
+
+\usepackage{comment}
+\ifdefined\details
+\includecomment{comment}
+\fi
+
+% \newenvironment{comments}{\begin{comment}}{\end{comment}}
+
+% \renewcommand{\thefootnote}{\alph{footnote}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\today}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi, \number \year} 
+
+\begin{document}
+
+\input{titlepage}
+
+%% Roman page number
+\setcounter{page}{2}
+\renewcommand{\thepage}{\roman{page}}
+
+
+% \chapter*{Dedication}
+% To the Queen, may she live forever.
+% \addcontentsline{toc}{chapter}{Dedication}
+
+\doublespacing
+
+\section*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+
+%% CNV
+Copy number variation (CNV) affects genomic regions from 50 bp up to entire chromosomes.
+In addition to being one of the major forms of genomic variation during recent evolution, CNV is implicated in many genetic disorders, complex traits and cancers.
+%% WGS technology
+Whole-genome sequencing (WGS) makes it possible to interrogate the genome for different types of variation: single nucleotide variants, small insertion-deletions, copy-number variant and other structural variants.
+However, technical bias remains a challenge for CNV detection, especially in repeat-rich regions or to detect small or somatic variants.
+%% Population-based approach
+The vast majority of CNV detection methods analyze one sample at a time or only aggregate evidence across samples.
+In this work, I present a different approach that uses a large set of reference samples to correct for technical variation.
+This population-based approach is used on three different applications.
+%% Chromosome CNA in cancer
+First at the chromosome arm level, I used WGS data across 93 blood samples to detect somatic CNV in paired kidney cancer samples.
+The population-based approach was sensitive enough to detect somatic loss or gain of chromosome arms despite weak signal in the bulk samples.
+We further studied tumors from male patients and found that somatic loss of chromosome Y was frequent and resulted in down-regulation of important genes such as {\it KDM5D} and {\it KDM6C}, two tumor suppressors previously associated with cancer.
+%% CNV in epilepsy patients
+Next, a method was implemented to identify CNVs across the genome following a similar population-based strategy.
+After an extensive comparison with existing methods and experimental validation, we found that our method, {\sf PopSV}, was more sensitive than other methods.
+Using {\sf PopSV} and WGS data for 198 individuals with epilepsy and 301 controls, we studied the distribution of small CNVs across the genomes of epilepsy patients.
+In addition to the known enrichment in large rare exonic CNVs, we found a significant enrichment of rare exonic CNVs smaller than 50 Kbp in epilepsy patients, especially in genes predicted to be intolerant to loss of function variants.
+More interestingly we observed, for the first time, a strong enrichment of non-coding CNVs close to known epilepsy genes.
+%% CNV in repeat-rich regions
+Finally, we used {\sf PopSV} to investigate copy number variation in low-mappability regions.
+Thanks to its population-based strategy, {\sf PopSV}'s performance was stable across different repeat profiles and we further analyzed the genomes of 640 healthy individuals.
+In contrast to existing CNV databases, we found a large amount of CNVs in repeat-rich regions and identified regions with recurrent CNVs that were absent from existing CNV catalogs, many of which were located within or near protein-coding genes.
+Independently from the known enrichment in segmental duplications, we found strong CNV enrichments in low-mappability regions, DNA satellites, short-tandem repeats and specific families of transposable elements.
+%% Conclusion
+Thanks to the ever-reducing cost of sequencing, large-scale WGS datasets are becoming more and more common.
+By using information across several samples, this work shows that variant detection can be dramatically improved and benefit CNV studies in cancer, complex disease or in challenging genomic regions.
+
+\newpage
+
+\section*{R\'esum\'e}
+\addcontentsline{toc}{chapter}{R\'esum\'e}
+
+%% VNC
+Les variabilités du nombre de copies (VNCs) sont des variations génomiques affectant 50 nucléotides ou plus.
+Les VNCs ont fortement contribué \`a l'évolution humaine récente mais jouent aussi un rôle important dans de nombreuses maladies génétiques et autres caractères complexes.
+%% Sequencage
+Le séquen\c{c}age du génome permet d'étudier différent types de variations génomiques: les substitutions d'un nucléotide, les petites insertions/délétions ainsi que les VNCs et autres variants structuraux.
+Cependant la présence de biais techniques limite la détection des VNCs, en particulier dans les régions répétées du génome ou pour détecter les variants les plus petits ou somatiques.
+%% Nouvelle approche
+La plupart des méthodes de détection de VNCs analysent chaque échantillon séparément ou accumulent naïvement le signal dans plusieurs échantillons.
+Dans cette étude, je présente une nouvelle approche qui vise \`a utiliser un groupe d'échantillons comme référence pour intégrer la variation d'origine technique.
+Cette approche est appliquée dans le cadre de trois études génomiques.
+%% VNC chromosomale dans le cancer
+Dans un premier temps au niveau chromosomique, j'utilise des données de séquen\c{c}age de 93 échantillons de sang pour détecter des VNCs somatiques dans des échantillons de tumeur du rein provenant des m\^emes individus.
+Gr\^ace \`a l'utilisation d'échantillons de référence, les pertes ou gains de chromosomes somatiques dont le signal est faible ont aussi pu être détectées.
+Dans cette étude, nous nous concentrons ensuite sur la perte somatique du chromosome Y dans les tumeurs des patients hommes.
+Entre autre nous montrons que la perte somatique du chromosome Y est associée \`a une diminution de l'expression de ses gènes, dont {\it KDM5D} et {\it KDM6C}, deux gènes suppresseurs de tumeurs.
+%% VNC chez les malades de l'epilepsie
+Dans un second temps, j'ai développé une méthode utilisant une approche similaire pour détecter des VNCs dans le génome.
+\`A l'aide de données de séquencage et de validation expérimentale, nous montrons que notre méthode, {\sf PopSV}, est plus sensible que les méthodes existantes.
+Nous étudions ensuite la distribution des VNCs dans 198 individus atteints d'épilepsie et 301 contr\^oles.
+Nous retrouvons l'enrichissement connu des VNCs larges, rares et exoniques mais nous montrons que les VNCs codants plus petits que 50,000 nucléotides sont aussi enrichis dans les malades, notamment dans les gènes prédis pour \^etre intolérants aux variants perte de fonction.
+Nous observons aussi pour la première fois un enrichissement de VNCs non-codants proches de gènes associés \`a l'épilepsie.
+%% VNC dans les regions repetees
+Dans un troisième temps, j'utilise {\sf PopSV} pour étudier la distribution des VNCs dans les régions répétées du génome de 640 individus sains. 
+Malgré la difficulté inhérente \`a ces régions, la performance de notre approche reste stable.
+Nous trouvons de nombreux VNCs dans les régions répétées et identifions des régions qui contiennent fréquemment des VNCs mais absentes des catalogues publics de VNCs, notamment proches de gènes.
+De plus, nous décrivons un enrichissement dans les régions de faible mappabilité et dans certaines familles de satellites, microsatellites et éléments transposables, indépendemment de l'enrichissement connu dans les duplications segmentales.
+%% Conclusion
+Ces résultats démontrent les bénéfices de l'utilisation d'échantillons de référence pour détecter les VNCs \`a partir de données de séquencage et pour étudier le profile génomique de cancers, maladies complexes ou génomes d'individus sains.
+
+\singlespacing
+
+\newpage
+
+\hypersetup{linkcolor=black}
+
+\tableofcontents
+
+\newpage
+
+\section*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+
+\begin{description}
+% \item[1000GP] The 1000 Genomes Project.
+\item[aCGH:] {\bf a}rray {\bf C}omparative {\bf G}enomic {\bf H}ybridization.
+\item[AT:] {\bf A}denine or {\bf T}hymine.
+\item[BAM:] \textbf{B}inary {\bf A}lignment/\textbf{M}ap.
+\item[BLAST:] \textbf{B}asic \textbf{L}ocal \textbf{A}lignment \textbf{S}earch \textbf{T}ool.
+\item[bp:] {\bf b}ase {\bf p}air.
+\item[cDNA:] \textbf{c}omplementary \textbf{DNA}.
+\item[CENet:] {\bf C}anadian {\bf E}pilepsy {\bf Net}work.
+\item[ccRCC:] {\bf c}lear {\bf c}ell {\bf R}enal {\bf C}ell {\bf C}arcinoma.
+\item[CNV:] {\bf C}opy-{\bf N}umber {\bf V}ariation or {\bf C}opy {\bf N}umber {\bf V}ariant.
+  % \item[CNA:] {\bf C}opy-{\bf N}umber {\bf A}berration or {\bf C}opy-{\bf N}umber {\bf A}lteration. Mostly used in the cancer literature to describe somatic CNVs.
+\item[CRISPR:] \textbf{C}lustered \textbf{R}egularly \textbf{I}nterspaced \textbf{S}hort \textbf{P}alindromic \textbf{R}epeats.
+\item[CTG:] {\bf C}entromere, {\bf T}elomere, {\bf G}aps.
+\item[DGV:] {\bf D}atabase of {\bf G}enomic {\bf V}ariants.
+\item[DNA:] \textbf{D}eoxyribo\textbf{N}ucleic \textbf{A}cid.
+\item[DNase:] \textbf{D}eoxyribo\textbf{N}ucle\textbf{ase}.
+\item[dsDNA:] \textbf{d}ouble-\textbf{s}tranded \textbf{DNA}.
+\item[eQTL:] {\bf e}xpression {\bf Q}uantitave {\bf T}rait {\bf L}ocus.
+\item[ERV:] \textbf{E}ndogenous \textbf{R}etro\textbf{V}irus.
+\item[FDR:] {\bf F}alse {\bf D}iscovery {\bf R}ate.
+\item[FISH:] {\bf F}luorescent {\it {\bf I}n {\bf S}itu} {\bf H}ybridization. 
+\item[FoSTeS:] {\bf Fo}rk {\bf S}talling and {\bf Te}mplate {\bf S}witching.
+\item[GC:] {\bf G}uanine or {\bf C}ytosine.
+\item[GoNL:] {\bf G}enome {\bf o}f {\bf N}ether{\bf L}ands.%\cite{Francioli2014}.
+\item[GTEx:] {\bf G}enotype-{\bf T}issue {\bf Ex}pression project.
+\item[HERV:] {\bf H}uman \textbf{E}ndogenous \textbf{R}etro\textbf{V}irus.
+\item[HIV/AIDS:] \textbf{H}uman \textbf{I}mmunodeficiency \textbf{V}irus/{\bf A}cquired {\bf I}mmune {\bf D}eficiency {\bf S}yndrome.
+\item[ICGC:] \textbf{I}nternational \textbf{C}ancer \textbf{G}enome \textbf{C}onsortium.
+\item[IQR:] {\bf I}nter{\bf Q}uartile {\bf R}ange.
+\item[Kbp:] {\bf K}ilo {\bf b}ase {\bf p}air, i.e. 1,000 bp.
+\item[LOX:] \textbf{L}oss \textbf{O}f (chromosome) \textbf{X}.
+\item[LOY:] \textbf{L}oss \textbf{O}f (chromosome) \textbf{Y}.
+\item[Mbp:] {\bf M}ega {\bf b}ase {\bf p}air, i.e. 1 million bp.
+\item[Gbp:] {\bf G}iga {\bf b}ase {\bf p}air, i.e. 1 billion bp.
+\item[MEI:] {\bf M}obile {\bf E}lement {\bf I}nsertion.
+\item[MMEJ:] \textbf{M}icrohomology-\textbf{M}ediated {\bf E}nd {\bf J}oining.
+\item[NHEJ:] {\bf N}on-{\bf H}omologous {\bf E}nd {\bf J}oining. 
+\item[NAHR:] {\bf N}on-{\bf A}llelic {\bf H}omologous {\bf R}ecombination.
+\item[OMIM:] {\bf O}nline {\bf M}endelian {\bf I}nheritance in {\bf M}an.
+\item[PCR:] {\bf P}olymerase {\bf C}hain {\bf R}eaction.
+\item[QTL:] {\bf Q}uantitave {\bf T}rait {\bf L}ocus.
+\item[RCC:] {\bf R}enal {\bf C}ell {\bf C}arcinoma.
+\item[RD:] {\bf R}ead-{\bf D}epth, also called read coverage or depth of coverage in the literature.
+\item[RNA:] \textbf{R}ibo\textbf{N}ucleic \textbf{A}cid.
+\item[RPKM:] {\bf R}eads \textbf{P}er \textbf{K}ilobase per \textbf{M}illion mapped reads.
+\item[RT-PCR:] \textbf{R}eal-\textbf{T}ime \textbf{PCR}.
+\item[sCNV:] {\bf s}omatic {\bf C}opy-{\bf N}umber {\bf V}ariation.
+\item[sLOY] {\bf s}omatic \textbf{L}oss \textbf{O}f (chromosome) \textbf{Y}.
+\item[SNP:] {\bf S}ingle {\bf N}ucleotide {\bf P}olymorphism. 
+\item[SNV:] {\bf S}ingle {\bf N}ucleotide {\bf V}ariant. 
+\item[SV:] {\bf S}tructural {\bf V}ariation or {\bf S}tructural {\bf V}ariant.
+\item[STR:] {\bf S}hort {\bf T}andem {\bf R}epeat.
+\item[SVA:] {\bf S}INE/{\bf V}NTR/{\bf A}lu.
+\item[TAD:] {\bf T}opologically {\bf A}ssociating {\bf D}omains. 
+\item[TE:] {\bf T}ransposable {\bf E}lement. 
+\item[WGS:] {\bf W}hole-{\bf G}enome {\bf S}equencing.
+\end{description}
+
+\listoffigures %
+
+\newpage
+
+\listoftables %
+
+\hypersetup{linkcolor={red!70!black}}
+
+\newpage
+
+\section*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+I would first like to thank my supervisor, Dr. Guillaume Bourque, for having me as his PhD student, supporting me over the years and providing a great environment for me to grow as a scientist.
+I learned a lot about genomics, critical thinking, problem solving, science and academia from our discussions.
+I will leave Canada with a greater passion for research.
+In addition to the mentoring, I'm extremely grateful for the all the opportunities I was given: for sending me to many conferences, for including me to national and international projects, for encouraging my short stays abroad visiting his collaborators, and for helping me find a post-doc.
+These have been extremely valuable experiences.
+Also, thank you for giving me the freedom and trust to organize my time.
+I'm glad I was able to have teaching experiences or to explore ideas that were not directly relevant to my main project.
+
+I would like to thank the members of my supervisory committee, Dr. Simon Gravel and Dr. Mathieu Blanchette, for their guidance, their availability, and their valuable thesis and career advice.
+
+I would like to thank the former and current members of the Bourque lab who have made my day-to-day life as a PhD student so easy.
+Special thanks to Trish for being my partner in crime in the lab, Louis for showing me what to aim for in term of knowledge and skills, Mathieu for the discussions and for including me in exciting projects, Simon for his guidance and trust with his projects, Francois and Toby for the R enthusiasm, Eric for PhD advice, and everyone for the repeated support and faith in my project.
+It was always a pleasure to work in the lab, during the studious moments and during the breaks, debating over the student life vs staff life, having ``important meetings'' on Friday afternoon, or when someone was dressed up as the Queen to celebrate their citizenship... Good times.
+
+I would also like to thank the Human Genetics department for the opportunities I benefited from and their support of the student society.
+I had a great experience as part of the executive committee of the student society and it is partly because of the recognition and support of the department.
+A special mention to Ross who was always so understanding and on top of the administrative work, especially during my troubles with the study permit renewal...
+
+Then, I would like to thank my friends in Montreal.
+My PhD was also an awesome period of my life because of the friendships that grew in 692, the soccer team, the volley ball team, at the HGSS events, in the HGSS Exec, at conferences and other travels, at the Genome Center and around.
+Special thanks to Emma, Renata, Patricia, Marion and Vini; I knew I could be fully be myself with you.
+I am also thankful to my compatriotes Thibault, Richard and Stan with which I had great times during my first years here.
+
+Enfin, je voudrais remercier ma famille pour leur soutien malgré la distance.
+J'ai hâte d'entrer dans le club familial des Drs. Monlong.
+Je remercie ma soeur Julie qui m'a montré la voie et a placé la barre bien haute.
+Et bien sur mes parents, Patrick et Claire, qui ont fait de moi la personne que je suis aujourd'hui et qui ont cultivé ma passion pour la science depuis tout petit.
+Je réalise à peine la chance que j'ai eu de grandir dans cette famille.
+J'ai une pensée toute particulière pour ma mère qui j'espère serait fière de moi.\includegraphics[height=.8em]{clover.png}
+
+\newpage
+
+\section*{Format of the Thesis}
+\addcontentsline{toc}{chapter}{Format of the Thesis}
+
+This thesis consists of 6 chapters. Chapter \ref{chap:intro} is an introduction to the different topics relevant to my PhD work and presents its hypotheses and objectives.
+Chapter \ref{chap:loy}-\ref{chap:rep} are original research chapters.
+Chapter \ref{chap:loy} contains a manuscript that was published in {\it Scientific Reports}\cite{Arseneault2017}.
+Chapter \ref{chap:epi} contains a manuscript that was published in {\it PLoS Genetics}\cite{Monlong2018}.
+The manuscript in Chapter \ref{chap:rep} was published in {\it Nucleic Acids Research}\cite{Monlong2018nar}.
+Chapter \ref{chap:disc} is a general discussion about the benefits of population-based approaches for CNV detection in whole-genome sequencing data.
+Chapter \ref{chap:conc} concludes the thesis and describes future directions for population-based approaches of structural variant detection.
+
+\nameref{append:other} lists other publications to which the thesis author have contributed during the thesis period.
+\nameref{append:loy}, \nameref{append:epi} and \nameref{append:rep} contain supplementary material for chapters \ref{chap:loy}, \ref{chap:epi} and \ref{chap:rep}, respectively.
+
+\newpage
+
+\section*{Contributions of Authors}
+\addcontentsline{toc}{chapter}{Contributions of Authors}
+\label{sec:cont}
+
+Chapter \ref{chap:intro} contains a literature review covering sequencing technology, structural variation, genomic repeats, cancer and epilepsy.
+Chapter \ref{chap:disc} and \ref{chap:conc} contains a general discussion and future directions about population-based approaches and whole-genome sequencing studies.
+These chapters were written by the thesis author under the supervision of Dr. Bourque.
+
+Chapter \ref{chap:loy} represents a manuscript authored by Madeleine Arseneault, Jean Monlong, Naveen S. Vasudev, Ruhina S. Laskar, Maryam Safisamghabadi, Patricia Harnden, Lars Egevad, Nazanin Nourbehesht, Pudchalaluck Panichnantakul, Ivana Holcatova, Antonin Brisuda, Vladimir Janout, Helena Kollarova, Lenka Foretova, Marie Navratilova, Dana Mates, Viorel Jinga, David Zaridze, Anush Mukeria, Pouria Jandaghi, Paul Brennan, Alvis Brazma, Jorg Tost, Ghislaine Scelo, Rosamonde E. Banks, Mark Lathrop, Guillaume Bourque and Yasser Riazalhosseini.
+The thesis author developed the computational methods for WGS analysis, analyzed WGS data and generated the figures.
+YR conceived the study and designed the experiments with contribution from GB.
+NV, PH, LE, IH, AB, VJ, HK, LF, MN, DM, ViJ, DZ, AM, PB, GS and REB were responsible for patient selection, sample collection, sample preparation and pathological reviews.
+MA and NN prepared DNA, performed experiments to detect loss of chromosome Y and analyzed the data with contribution from PJ.
+PP, RSL, PJ and AlB performed the gene expression analysis.
+ML provided critical advice on data analysis and statistical approaches.
+MS and PJ performed functional analysis with cell line models.
+MA and YR wrote the manuscript, with assistance from JT, GS and REB.
+
+Chapter \ref{chap:epi} contains a manuscript by Jean Monlong, Simon L. Girard, Caroline Meloche, Maxime Cadieux-Dion, Danielle M. Andrade, Ron G. Lafreniere, Micheline Gravel, Dan Spiegelman, Alexandre Dionne-Laporte, Cyrus Boelman, Jacques L. Michaud, Guy Rouleau, Berge A. Minassian, Guillaume Bourque and Patrick Cossette.
+The thesis author implemented the method, performed the analysis with SLG, ADL and DS, designed the experimental validation with CM and SLG, and wrote the manuscript with SLG and GB.
+SLG, GB and PC conceived and designed the study.
+DMA, MG, CB, JLM, GR, BAM, RGL, FH performed the clinical recruitment.
+CM and MCD performed the experimental validation.
+
+The manuscript in Chapter \ref{chap:rep} was authored by Jean Monlong, Patrick Cossette, Caroline Meloche, Guy Rouleau, Simon L. Girard and Guillaume Bourque.
+The thesis author and GB conceived and designed the study.
+The thesis author performed the analysis, designed the experimental validation with CM and SLG, and wrote the manuscript with GB.
+PC, GR and SLG provided data and resources for the method validation.
+CM performed the experimental validation.
+
+The contribution of the thesis author to other manuscripts is described in \nameref{append:other}.
+
+
+\chapter{Introduction}
+\label{chap:intro}
+\fancyhead[RO,LE]{\leftmark}
+%% Back to page numbers
+\doublespacing
+\pagenumbering{arabic}
+\input{chapters/introduction}
+
+\singlespacing
+\chapter[Detection of Somatic Loss of Chromosome Y]{Population-Based Detection of Somatic Loss of Chromosome Y in Cancer}
+\label{chap:loy}
+\doublespacing
+\input{chapters/chapter-loy}
+
+\singlespacing
+\chapter[Detection of CNVs in Epilepsy Patients]{Population-Based Detection of CNVs in Epilepsy Patients}
+\label{chap:epi}
+\doublespacing
+\input{chapters/chapter-epipopsv}
+
+\singlespacing
+\chapter[Detection of CNVs in Low-Mappability Regions]{Population-Based Detection of CNVs in Low-Mappability Regions}
+\label{chap:rep}
+\doublespacing
+\input{chapters/chapter-repopsv}
+
+\input{chapters/discussion}
+
+\newpage
+\singlespacing
+\bibliographystyle{unsrtnat5}
+\bibliography{thesis-fixed}
+
+
+\chapter*{Appendices\markboth{APPENDICES}{}}
+\addcontentsline{toc}{chapter}{Appendices}
+
+\section*{Appendix A}
+\addcontentsline{toc}{section}{Appendix A: Significant Contributions to Other Projects}
+\label{append:other}
+\input{chapters/appendix-other}
+
+\clearpage
+ 
+\section*{Appendix B}
+\addcontentsline{toc}{section}{Appendix B: Supplementary Materials from Chapter \ref{chap:loy}}
+\label{append:loy}
+\input{chapters/appendix-loy}
+
+\clearpage
+
+\section*{Appendix C}
+\addcontentsline{toc}{section}{Appendix C: Supplementary Materials from Chapter \ref{chap:epi}}
+\label{append:epi}
+\input{chapters/appendix-epipopsv}
+
+\clearpage
+
+\section*{Appendix D}
+\addcontentsline{toc}{section}{Appendix D: Supplementary Materials from Chapter \ref{chap:rep}}
+\label{append:rep}
+\input{chapters/appendix-reppopsv}
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

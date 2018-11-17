@@ -1,0 +1,546 @@
+Supplementary material for chapter \ref{chap:epi} and its corresponding manuscript: {\bf Global characterization of copy number variants in epilepsy patients from whole genome sequencing}.
+
+\section*{Supplementary Tables}
+
+%% Create counter for supp figs ("S1" etc)
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\ref{chap:epi}.\arabic{figure}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\ref{chap:epi}.\arabic{table}}
+
+\begin{table}[htp]
+  \caption[{\sf PopSV} calls validated by RT-PCR.]{{\bf {\sf PopSV} calls validated by RT-PCR.} {\small The Excel file contains the location of each region, the CNV type, the number of carriers in the CENet cohorts, the maximum proportion of carriers in the CNV databases, Taqman probe ID and validation status. \url{https://doi.org/10.1371/journal.pgen.1007285.s003}}}
+  \label{tab:validation}
+\end{table}
+
+\begin{table}[htp]
+  \centering
+  \resizebox{\textwidth}{!}{.
+    \begin{tabular}{|l|l|p{.3\textwidth}|l|l|l|l|l|l|}
+      \hline
+      {\bf Patient } & {\bf Epilepsy type } & {\bf Syndrome }                                                       & {\bf Copy } & {\bf Chr. } & {\bf CNV start } & {\bf CNV end } & {\bf Exon disrupted }   & {\bf Taqman probe } \\
+                     &  &                                                        & {\bf number } &  &  & &    &  \\
+      \hline
+      CNET0188       & Focal                & Mesial temporal lobe sclerosis                                        & 1                   & 2          & 141335001        & 141365000      & {\it LRP1B}                  & Hs02078420\_cn      \\
+      \hline
+      CNET0084       & Focal                & Temporal lobe                                                         & 1                   & 4          & 120205001        & 120280000      & {\it USP53};{\it FABP2};{\it C4orf3}     & Hs04813260\_cn      \\
+      \hline
+      CNET0143       & Generalized          & Childhood absence epilepsy                                            & 1                   & 5          & 65055001         & 65465000       & {\it NLN};{\it ERBB2IP};{\it SREK1}       & Hs03552554\_cn      \\
+      \hline
+      CNET0151       & Generalized          & Eyelid myoclonia epilepsy with absence                                & 1                   & 9          & 8600001          & 8770000        & {\it PTPRD}                   & Hs06875003\_cn      \\
+      \hline
+      CNET0041       & Generalized          & Idiopathic generalized epilepsies                                     & 1                   & 11         & 62625001         & 62645000       & {\it SLC3A2}                 & Hs03777991\_cn      \\
+      \hline
+      CNET0066       & Generalized          & Idiopathic generalized epilepsies                                     & 1                   & 13         & 67325001         & 67575000       & {\it PCDH9}                  & Hs06378870\_cn      \\
+      \hline
+      CNET0025       & Generalized          & Early onset absence epilepsy (onset <4, absence with or without GTCs) & 1                   & 15         & 60735001         & 60805000       & {\it RORA};{\it NARG2}             & Hs05369880\_cn      \\
+      \hline
+      CNET0195       & Focal                & Occipital lobe epilepsy                                               & 1                   & 22         & 34095001         & 34200000       & {\it LARGE}                  & Hs05575584\_cn      \\
+      \hline
+      CNET0005       & Generalized          & febrile sz, child onset GTCs                                          & 1                   & 22         & 41960001         & 42050000       & {\it PMM1};{\it DESI1};{\it CSDC2};{\it XRCC6} & Hs05580065\_cn      \\
+      \hline
+    \end{tabular}
+  }
+  \caption{Other pathogenic profiles.}
+  \label{tab:supp}
+\end{table}
+
+\begin{table}[htp]
+  \caption[Clinical features of epileptic patients.]{{\bf Clinical features of epileptic patients.} {\small The Excel file contains the type of epilepsy, age of onset, sex, family history, pharmaco-resistance and potential intellectual disabilities. \url{https://doi.org/10.1371/journal.pgen.1007285.s002}}}
+  \label{tab:clinical}
+\end{table}
+
+\clearpage
+
+\section*{Supplementary Figures}
+
+
+%% Figures start here
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{.48\textwidth}
+    \includegraphics[width=\linewidth,page=5]{figures/epilepsy-biasWGS.pdf}
+    \caption{}
+    \label{fig:bias:var}
+  \end{subfigure}
+  \begin{subfigure}[b]{.48\textwidth}
+    \includegraphics[width=\linewidth,page=6]{figures/epilepsy-biasWGS.pdf}
+    \caption{}
+    \label{fig:bias:rank}
+  \end{subfigure}
+  \caption[Variation and bias in whole-genome sequencing experiments in the epilepsy cohort.]{{\bf Variation and bias in whole-genome sequencing experiments in the epilepsy cohort.} {\small a) Distribution of the bin inter-sample standard deviation coverage (red) and null distribution (blue: bins shuffled, green: simulated normal distribution). b) Proportion of the genome in which a given sample (x-axis) has the highest (red) or lowest (blue) RD. In the absence of bias all samples should be the most extreme at the same frequency (dotted horizontal line). }}
+  \label{fig:bias:varrank}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=4]{figures/cagekid-biasWGS.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=4]{figures/twin-biasWGS.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=4]{figures/twin-biasWGS-QDNAseq.pdf}
+    \caption{}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=5]{figures/cagekid-biasWGS.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=5]{figures/twin-biasWGS.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=5]{figures/twin-biasWGS-QDNAseq.pdf}
+    \caption{}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=6]{figures/cagekid-biasWGS.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=6]{figures/twin-biasWGS.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.3\textwidth}
+    \includegraphics[width=\linewidth,page=6]{figures/twin-biasWGS-QDNAseq.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption[Variation and bias in whole-genome sequencing experiments in CageKid and the twin dataset.]{{\bf Variation and bias in whole-genome sequencing experiments in the normals from CageKid (a,d,g), the twin dataset (b,e,h) and the twin dataset after using {\sf QDNAseq}\cite{Scheinin2014} correction (c,f,i).} {\small a-c) Distribution of the bin inter-sample standard deviation coverage (red) and null distribution (blue: bins shuffled, green: simulated normal distribution). d-f) Same for the bin inter-sample standard deviation coverage. g-i) Proportion of the genome in which a given sample (x-axis) has the highest (red) or lowest (blue) RD. In the absence of bias all samples should be the most extreme at the same frequency (dotted horizontal line). }}
+  \label{fig:wgsbias2}
+\end{figure}
+
+\begin{figure}[htp]
+  \begin{subfigure}[b]{.48\textwidth}
+    \includegraphics[width=\linewidth,page=2]{figures/cagekid-5kbp-normComparison.pdf}
+    \caption{}
+    \label{fig:zscoreEx:worstZ}
+  \end{subfigure}
+  \begin{subfigure}[b]{.48\textwidth}
+    \includegraphics[width=\linewidth,page=1]{figures/cagekid-5kbp-normComparison.pdf}
+    \caption{}
+    \label{fig:normComp}
+  \end{subfigure}
+  \caption[Comparison of different normalization approaches.]{{\bf Comparison of different normalization approaches.} {\small a) For each normalization approach, the sample with the least normal Z-score distribution is shown. b) After targeted normalization, a lower proportion of the genome looks problematic for the analysis. Fewer bins have non-normal bin counts (top-left), the sample ranks are more random suggesting less sample-specific bias (top-right), and Z-scores fit better a Normal distribution on average (bottom-left) and in the worst sample (bottom-right). The dotted line is computed from simulated bin counts. }}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=\linewidth, page=1]{figures/twin-benchmark.pdf}
+  \caption[Frequency of calls in an average sample from the Twin study.]{{\bf Frequency of calls in an average sample from the Twin study.} {\small The bars show the proportion of calls in an average samples (y-axis), grouped by the frequency of the call in the dataset (x-axis), for different methods.}}
+  \label{fig:freqmeth}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.8\linewidth, page=2]{figures/twin-benchmark.pdf}
+  \caption[CNV clustering and twin pedigree.]{{\bf CNV clustering and twin pedigree.} {\small The hierarchical cluster tree from the CNV calls is cut at different levels ({\it x-axis}), cluster groups are compared to the known pedigree using the Rand index ({\it y-axis}). Different clustering linkage criteria ({\it point style}) are used and the one showing the best Rand index is highlighted by the line.}}
+  \label{fig:twinclust}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.8\linewidth, page=3]{figures/twin-benchmark.pdf}
+  \caption[Replication in twins for different significance thresholds]{{\bf Replication in twins for different significance thresholds.} {\small Each point represents the number of replicated calls per sample (average across samples) and the proportion of replicated calls per sample. The vertical error bar shows the variation of the replication rate across the samples. The points and lines were computed by filtering calls at different significance levels (q-value for {\sf PopSV}, number of supporting reads for {\sf LUMPY} and eval1/eval2 for {\sf CNVnator}, see \nameref{sec:suppmat:epipopsv}).}}
+  \label{fig:twinconcsig}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.9\linewidth, page=4]{figures/twin-benchmark.pdf}
+  \caption[Calls found by several methods]{{\bf Calls found by several methods.} {\small Focusing on calls found by at least two methods, the heatmap shows the proportion of calls from one method (x-axis) that were also found by another (y-axis) on average per sample.}}
+  \label{fig:twincallcomp}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=3]{figures/cagekid-benchmark.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=2]{figures/cagekid-benchmark.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=4]{figures/cagekid-benchmark.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=5]{figures/cagekid-benchmark.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption[Benchmark across paired normal/tumor in CageKid]{{\bf Benchmark across paired normal/tumor in CageKid.} {\small Number (a) and proportion (b) of germline calls replicated in the paired tumor in CageKid. c) Number and proportion of replicated calls when filtering calls at different significance levels. d) Focusing on calls found by at least two methods, the color shows the proportion of calls from one method (x-axis) that were also found by another (y-axis) on average per sample. }}
+  \label{fig:ckconc}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=2]{figures/twin-binSizeComp.pdf}
+    \caption{}
+    \label{fig:size:spec}
+  \end{subfigure}
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=4]{figures/twin-binSizeComp.pdf}
+    \caption{}
+    \label{fig:size:zdel}
+  \end{subfigure}
+
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth, page=3]{figures/twin-binSizeComp.pdf}
+    \caption{}
+    \label{fig:size:zdup}
+  \end{subfigure}
+  \begin{subfigure}{.48\textwidth}
+    \includegraphics[width=\linewidth,page=6]{figures/twin-binSizeComp.pdf}
+    \caption{}
+    \label{fig:size:sens}
+  \end{subfigure}
+  \caption[Comparison of {\sf PopSV} results using different bin sizes.]{{\bf Comparison of {\sf PopSV} results using different bin sizes.} {\small a) 5 Kbp calls of different sizes (x-axis) are split according to the proportion of the call supported by 500 bp calls. The Z-score of 500 bp bins in 5 Kbp calls is consistent with the call for deletion b) and duplication c) signal. 5 Kbp calls with lower significance (e.g. single-bin calls) are less supported by 500 bp calls (a) but their Z-scores are in the consistent direction (b,c) although not always significant enough to be called. d) Proportion of 500 bp calls of different sizes (x-axis) overlapping a 5 Kbp call.}}
+  \label{fig:compsize}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.9\linewidth]{figures/wgs-array-sizeComp.pdf}
+  \caption[CNV size in our cohort and array-based studies.]{{\bf CNV size in our cohort and four array-based studies.} {\small The bars show the average number of CNVs called in a sample in the different cohorts. {\it Redon 2006}\cite{Redon2006} and {\it Itsara 2009}\cite{Itsara2009} are population studies using technology similar to previous epilepsy studies. {\it Addis 2016}\cite{Addis2016} is a recent study of large CNVs in absence epilepsy. {\it Conrad 2010}\cite{Conrad2010} is a population study that used multiple arrays to increase its resolution. }}
+  \label{fig:arraysize}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.9\linewidth, page=2]{figures/epilepsy-enrichmentPatterns.pdf}
+  \caption[Exonic enrichment significance.]{{\bf Exonic enrichment significance.} {\small The grey violin plot represents the difference in fold-enrichment between patients and controls across 10,000 permutations where the patient/control labels had been shuffled. The red point represents the observed difference between patients and controls (Fig. \ref{fig:exenr}).}}
+  \label{fig:exenrsig}
+\end{figure}
+
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{.7\textwidth}
+    \includegraphics[width=\linewidth,page=3]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{}
+    \label{fig:epiexpriv}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{.49\textwidth}
+    \includegraphics[width=\linewidth,page=5]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{}
+    \label{fig:epiexpriv2}
+  \end{subfigure}
+  \begin{subfigure}[b]{.49\textwidth}
+    \includegraphics[width=\linewidth,page=4]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption[Rare exonic CNVs are less private in the epilepsy cohort.]{{\bf Rare exonic CNVs are less private in the epilepsy cohort.} {\small Proportion of rare exonic CNVs (y-axis) seen in X or more individuals (x-axis). The ribbon shows the 5\%-95\% confidence interval. In b), only French-Canadians individuals were analyzed and we down-sampled the epilepsy cohort to match the sample size of the French-Canadians controls. In c), the top 20 samples with the most non-private rare exonic SVs were removed. }}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{.7\textwidth}
+    \includegraphics[width=\linewidth,page=10]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{}
+    \label{fig:epigenesize}
+  \end{subfigure}
+  \begin{subfigure}[b]{.7\textwidth}
+    \includegraphics[width=\linewidth,page=12]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{}
+    \label{fig:epicnvex}
+  \end{subfigure}
+
+  \caption[Enrichment in epilepsy genes.]{{\bf Enrichment in epilepsy genes.} {\small a) Epilepsy genes (red) are genes known to be associated with epilepsy. The control genes (dotted blue) are random genes selected so that the size distribution is similar to the sizes of genes hit by CNVs (plain blue). b) In three different datasets (color), genes hit by rare deletion (top) or duplications (bottom) at different frequency thresholds (x-axis) were tested for enrichment in epilepsy genes (y-axis, point-size).}}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[b]{.7\textwidth}
+    \includegraphics[width=\linewidth, page=6]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{Rare CNVs}
+    \label{fig:epidistnc}
+  \end{subfigure}
+  \begin{subfigure}[b]{.7\textwidth}
+    \includegraphics[width=\linewidth, page=7]{figures/epilepsy-enrichmentPatterns.pdf}
+    \caption{Rare deletions}
+    \label{fig:epidistncdel}
+  \end{subfigure}
+  \caption[Rare non-coding CNVs near epilepsy genes.]{{\bf Rare non-coding CNVs near epilepsy genes.} {\small The graphs show the cumulative number of individuals (y-axis) with a rare non-coding variants located at X Kbp or less (x-axis) from the exonic sequence of a known epilepsy gene. The controls were down-sampled to the sample size of the epilepsy cohort. The ribbon shows the 5\%/95\% confidence interval. In a), deletions and duplications were considered; in b), only deletions were used.}}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{\textwidth}
+    \fbox{\includegraphics[width=\linewidth]{figures/ncdel-GABRD-ucscBrowser.pdf}}
+    \caption{}
+    \label{fig:ncepiexdel}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \fbox{\includegraphics[width=\linewidth]{figures/ncDup-CSNK1E-ucscBrowser.pdf}}
+    \caption{}
+    \label{fig:ncepiex1}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \fbox{\includegraphics[width=\linewidth]{figures/ncDel-FAM63B-ucscBrowser-eQTLs.pdf}}
+    \caption{}
+    \label{fig:ncepiex2}
+  \end{subfigure}
+
+  \caption[Non-coding CNVs with putative pathogenicity.]{{\bf Non-coding CNVs with putative pathogenicity.} {\small a) 2.7 Kbp deletion in an epilepsy patient, never seen in controls or CNV databases. Three other epilepsy patients have a rare non-coding deletions located at less than 200 Kbp from the {\it GABRD} gene. b) 8.8 Kbp duplication in two epilepsy patients, never seen in controls or CNV databases and overlapping a regulatory region associated with {\it CSNK1E}. c) 6.5 Kbp deletion of an ultra-conserved regions downstream of {\it FAM63B}. Two expression QTLs for this gene are highlighted with arrows.}}
+\end{figure}
+
+\begin{figure}[ht]
+  \includegraphics[width=\linewidth, page=9]{figures/epilepsy-enrichmentPatterns.pdf}
+  \caption[The enrichment in rare non-coding CNVs overlapping functional regions increases close to epilepsy genes.]{{\bf The enrichment in rare non-coding CNVs overlapping functional regions increases close to epilepsy genes.} {\small The graph shows the log odds ratio of having a rare non-coding CNV located at X Kbp or less (x-axis) from the exonic sequence of a known epilepsy gene. The y-axis shows the log odds ratio between epilepsy patients and controls. The controls were down-sampled to the sample size of the epilepsy cohort. We used CNVs overlapping regions functionally associated with the epilepsy gene (eQTL or promoter-associated DNase site).}}
+  \label{fig:epidistncfunOR}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/CHD2-deletedExon.png}
+  \caption[Small deletion of exon 13 in {\it CHD2}.]{{\bf Small deletion of exon 13 in {\it CHD2}.} {\small Abnormal mapping of the read pairs highlighted in red support the deletion detected by {\sf PopSV} using the read coverage. The deletion region is highlighted in orange.}}
+  \label{fig:chd213}
+\end{figure}
+
+\begin{figure}[htp]
+  \centering
+  \begin{subfigure}[b]{.49\textwidth}
+    \includegraphics[width=\linewidth, page=1]{figures/PopSV-cohortSize.pdf}
+    \caption{}
+  \end{subfigure}
+  \begin{subfigure}[b]{.49\textwidth}
+    \includegraphics[width=\linewidth, page=3]{figures/PopSV-cohortSize.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption[Reference cohort size and CNV detection quality.]{{\bf Reference cohort size and CNV detection quality.} {\small {\sf PopSV} was run on the Twins study using 10, 20, 30 or 45 samples as reference (color). In a), the y-axis shows how many calls from the down-sampled run were found in the original 45-refs run. The x-axis represents the FDR threshold (lower threshold being more stringent). b) Replication in twins. For different cohort sizes and FDR thresholds, the number (x-axis) and proportion (y-axis) of calls replicated in the other twin is shown. In both graphs, the lines represents the median per sample and the ribbon the minimum/maximum values.}}
+  \label{fig:cohortsize}
+\end{figure}
+
+
+
+%%%% 
+%%%% 
+%%%%%% FIGURES FOR SUPP MAT
+%%%% 
+%%%% 
+\clearpage
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.8\textwidth]{figures/TargetNorm.pdf}
+  \caption[Targeted normalization.]{{\bf Targeted normalization.} {\small The coverage across the reference samples (blue) in the bin to normalize is used to find supporting bins across the genome. These supporting bins only are used to compute the normalization factor. The same supporting bins will be used to normalize the bin count in a test sample (red).}}
+  \label{fig:targetNorm}
+\end{figure}
+
+\clearpage
+
+\section*{Supplementary Information}
+\label{sec:suppmat:epipopsv}
+
+\subsection*{Epilepsy patients and sequencing}
+
+\paragraph{Ethics and patients recruitment}
+CENet is a Genome Canada and Genome Qu\'ebec funded initiative that aims to bring personalized medicine in the treatment of epilepsy. Patients were recruited through two main recruitment sites at the Centre Hospitalier Universitaire de Montr\'eal (CHUM) and the Sick Kids Hospital in Toronto.
+This study was approved by the Research Ethics Board at the Sick Kids Hospital (REB number \verb!1000033784!) and the ethics committee at the Centre Hospitalier Universitaire de Montr\'eal (project number \verb!2003-1394,ND02.058-BSP(CA)!).
+Before their inclusion in this study, patients had to give written informed consents. The main cohort of this study was constituted of 198 unrelated patients with various types of epilepsy; 85 males and 113 females. The mean age at onset of the disease for our cohort was 9.2 ($\pm$6.7). Supplementary Table \ref{tab:clinical} presents a detailed description of the clinical features for the various individuals recruited in this study. DNA was extracted from blood DNA exclusively.
+301 unrelated healthy parents of other probands from CENet were also included in this study and used as controls.
+
+\paragraph{Libraries preparation and sequencing}
+gDNA was cleaned up using ZR-96 DNA Clean \& Concentrator\textsuperscript{TM}-5 Kit (Zymo) prior to being quantified using the Quant-iT\textsuperscript{TM} PicoGreen\textregistered\ dsDNA Assay Kit (Life Technologies) and its integrity assessed on agarose gels.
+Libraries were generated using the TruSeq DNA PCR-Free Library Preparation Kit (Illumina) according to the manufacturer's recommendations.
+Libraries were quantified using the Quant-iT\textsuperscript{TM} PicoGreen\textregistered\ dsDNA Assay Kit (Life Technologies) and the Kapa Illumina GA with Revised Primers-SYBR Fast Universal kit (Kapa Biosystems).
+Average size fragment was determined using a LabChip GX (PerkinElmer) instrument.
+
+The libraries were first denatured in 0.05N NaOH and then were diluted to 8pM using HT1 buffer.
+The clustering was done on a Illumina cBot and the flowcell was run on a HiSeq 2500 for 2x125 cycles (paired-end mode) using v4 chemistry and following the manufacturer's instructions.
+A phiX library was used as a control and mixed with libraries at 1\% level.
+The Illumina control software was HCS 2.2.58, the real-time analysis program was RTA v. 1.18.64. Program bcl2fastq v1.8.4 was then used to demultiplex samples and generate fastq reads.
+The average coverage was 37.6x $\pm$ 5.6x.
+The filtered reads were aligned to reference Homo\_sapiens assembly b37.
+Each readset was aligned using {\sf BWA}\citep{Li2010} which creates a Binary Alignment Map file (.bam).
+Then, all readset BAM files from the same sample are merged into a single global BAM file using Picard.
+Insertion and deletion realignment was performed on regions where multiple base mismatches were preferred over INDELs by the aligner since it appears to be less costly for the algorithm.
+Such regions were found to introduce false positive variant calls which may be filtered out by realigning those regions properly.
+Once local regions were realigned, the read mate coordinates of the aligned reads needed to be recalculated since the reads are realigned at positions that differ from their original alignment.
+Fixing the read mate positions is performed using Picard.
+Aligned reads were marked as duplicates if they have the same 5' alignment positions (for both mates in the case of paired-end reads).
+All but the best pair (based on alignment score) were marked as a duplicate in the \verb!.bam! file.
+Duplicates reads were excluded in the subsequent analysis. Marking duplicates was performed using Picard.
+
+\subsection*{Testing for technical bias in WGS}
+To investigate the bias in read depth (RD), we first fragmented the genome in non-overlapping bins of 5 Kbp. The number of properly mapped reads was used as RD measure, defined as read pairs with correct orientation and insert size, and a mapping quality of 30 (Phred score) or more. In each sample, GC bias was corrected by fitting a Loess model between the bin's RD and the bin's GC content. Using this model, the correction factor for each bin was estimated from its GC content. Bins with extreme coverage were identified when deviating from the median coverage by more than 3 standard deviation. After these conventional intra-sample corrections, RD across the different samples were combined and quantile normalized. At that point the different samples had the same global RD distribution and no bins with extreme coverage or GC bias. Two control RD datasets were constructed to represent our expectation when no bias is present. One was derived from the original RD by shuffling the bins' RD in each sample. In the second, RD was simulated from a Normal distribution with mean and variance fitted to the real distribution. Simulation or shuffling ensures that no region-specific or sample-specific bias remains. To investigate region-specific bias, we computed the mean and standard deviation of the RD in each bin across the different samples. The same was performed in the control datasets. If there is no bias, the distribution of these estimators should be similar in the original, shuffled and simulated RD. Next, to investigate experiment-specific bias, we retrieved which sample had the highest coverage in each bin. Then we computed, for each sample, the proportion of the genome where it had the highest coverage. If no bias was present, e.g. in the shuffled and simulated datasets, each sample should have the highest coverage in 100/N \% of the genome (with N the number of samples). If an experiment was more affected by technical bias, it would be more often extreme. The same analysis was performed monitoring the lowest coverage.
+
+The same analysis was ran after correcting the coverage in the Twin dataset using the {\sf QDNAseq} pipeline\cite{Scheinin2014}.
+The reads were counted in 5 Kbp bins using the function \verb!binReadCounts!.
+GC bias and mappability were corrected using the following functions (with default parameters): \verb!applyFilters!, \verb!estimateCorrection!, \verb!correctBins!, \verb!normalizeBins!, \verb!smoothOutlierBins!.
+
+\subsection*{{\sf PopSV}}
+
+\paragraph{Binning and coverage measure}
+The genome is fragmented in non-overlapping consecutive bins of fixed size (5 Kbp). In each bin and each sample the number of reads that overlap the bin and are properly mapped are counted to get a measure of coverage. Read pairs with correct orientation and insert size, and a mapping quality of 30 (Phred score) or more are considered properly mapped. The bin counts were then corrected for GC bias. In each sample, a LOESS model was fitted between the bin's count and bin's GC content. A normalization factor was then defined for each bin from its GC content.
+
+\paragraph{Constructing the set of reference samples}
+In the epilepsy study and the Twins dataset we used all the samples as reference. In the renal cancer dataset we used the normal samples as reference. For each dataset, a Principal Component Analysis (PCA) was performed across samples on the counts normalized globally (median/variance adjusted). The resulting first two principal components are used to verify the homogeneity of the reference samples.
+In the presence of extreme outliers or clear sub-groups, a more cautious analysis would be recommended. For example, outliers can remain in the set of reference samples but flagged as they might potentially harbor more false calls later. Independent analysis in each of the identified sub-group is also a solution, especially when the same samples are to be used as reference.
+Although our three datasets showed different levels of homogeneity, we did not need to exclude samples or split the analysis. The effect of weak outlier samples was either corrected by the normalization step or integrated in the population-view. Moreover, the principal components were used to select one control sample from the final set of reference samples. This sample is used in the normalization step as a baseline to normalize other samples against. We picked the sample closest to the centroid of the reference samples in the Principal Component space.
+
+\paragraph{Normalization}
+Although uniformity of the coverage across the genome is not required for our approach, RD values must be comparable across samples. When a particular region of the genome is tested, sample specific variation of technical origin must be minimized. This is done through a normalization step.
+Naive global normalization approaches like the Trimmed-Mean M(TMM) or quantile normalization have been first implemented and tested. The TMM normalization robustly aligns the mean RD value in the samples. Quantile normalization forces the RD distribution to be exactly the same in each sample. After witnessing the presence of uncharacterized sample-specific variation, we implemented a more suited normalization.
+Targeted normalization uses information across the set of reference samples to identify similar bins across the genome and normalize their counts separately (Fig. \ref{fig:targetNorm}). For each bin, the top 1000 bins with similar coverage patterns across the reference samples are used to normalize the coverage of the bin. TMM normalization is used on these top 1000 bins to derive the correct normalization factor for the bin to normalize. Similarity between two bins is measured using Pearson correlation between the counts across the reference samples. Hence, the top 1000 bins are most similar in term of relative coverage across the samples to the coverage in the bin to normalize. If some bias is present in some samples, the top 1000 bins should also harbor this bias. Hence, other regions with similar bias patterns are used to correct for it. In this targeted approach, each genomic region is normalized independently. The 1000 supporting bins are saved and used to normalized new samples (e.g. case sample). Although computationally expensive, it ensures that all bins are normalized with the same effort. In contrast, global normalization or even PCA-based approaches corrects for the most common or spread bias, but a subset of regions with specific bias might not be corrected.
+In order to compare the performance of the different normalization approaches we computed a set of quality metrics. The normalized RD will need to be suited for testing abnormal pattern across samples: under the null hypothesis, i.e. for normal bins, the RD should be relatively normally distributed and the samples rank should vary randomly from one bin to the other. The first metric is the proportion of bins with non-normal RD across the samples. Shapiro test was performed on each bin and a P-value lower than 0.01 defined non-normal RD. Then, the randomness of the sample ranks was tested by comparing the RD of each sample a region with the median across all samples. In regions of 100 consecutive bins, we counted how many times the RD in a sample was higher than the median across sample. If the ranks are random, this value should be around 0.5. The probability under the Binomial distribution is computed for each sample and corrected for multiple testing using Bonferroni correction. If any sample has an adjusted P-value lower than 0.05, we consider that the region has non-random ranks. The resulting QC metric is simply the proportion of regions with non-random sample ranks. This QC is specifically testing how much sample-specific bias remains. The remaining QC metrics look at the Z-score distribution in each sample. The proportion of non-normal Z-scores is computed by comparing the density curves of the Z-scores and simulated Normal Z-scores. We compute the proportion of the area under the density curve that does not overlap the Normal density curve. This estimate of the proportion of non-normal Z-scores is computed in each sample. The final metrics are the average and maximum across the samples.
+
+\paragraph{Abnormal RD test and Z-score computation}
+The test is based on Z-scores computed for each bin, corrected afterward for multiple testing. The Z-score represents how different the read count in the tested sample is from the reference samples. It is simply: $z=\frac{BC_t^b-mean(BC_{ref}^b)}{sd(BC_{ref}^b)}$ where $BC_t^b$ is the bin count, i.e. the number of reads, in bin $b$ and sample $t$.
+Inevitably some samples are hosting common CNVs. We observed that just a couple of samples hosting a CNVs could be enough to bias the standard deviation used in the score computation and mask these CNVs in the coming tests. In many cases the RD signal was clearly showing several groups of samples with proportional read counts. To improve the Z-score computation in those regions, a simple approach was used: the samples were stringently clustered using their RD and the group with higher number of samples was chosen as reference and used to compute the mean and standard deviation for the Z-score computation. In practice, this clustering affects only bins with clear clusters but would remove just a few or no samples in most situations. Furthermore, a median-based estimator was used for the standard deviation as it is less sensitive to outlier removal. A trimmed mean was also preferred over normal mean for its robustness to outliers.
+
+\paragraph{Significance and multiple testing correction}
+The Z-scores for all the bins of a sample are pooled and significance is estimated. Under the null hypothesis of normally distributed read counts, the Z-scores should also follow a normal distribution. For multiple testing correction, the Z-score empirical distribution is used to fit a normal and estimate the P-value and Q-value of each test. This step is performed using fdrtool R package.
+By default, the null distribution fitting for P-value computation assumes that only a low proportion of bins violates the null hypothesis. In aberrant genomes, e.g. in tumor samples, it is often an unrealistic assumption. We devised a new strategy to set the proportion of the empirical distribution, later used to estimate the null distribution variance. Here the null Z-score distribution is assumed to be centered on 0 and its variance is estimated by trimming the tails of the empirical distribution. To find a correct trimming factor, an iterative approach started from a low trimming factor and increased its value until reaching a plateau for the variance estimator. Indeed, once the plateau is reached, additional trimming does not change the estimated variance because there is no more abnormal Z-scores, only the central part of the null distribution. Samples with an important proportion of abnormal genome, e.g. tumor samples, showed more appropriate fit.
+Of note, the P-values for positive Z-scores (duplication) and negative Z-scores (deletion) are estimated separately. Thus, imbalance in the deletion to duplication ratio, or large aberration that lead to asymmetrical Z-score distribution does not affect the P-value estimation. Multiple testing correction is performed after pooling all the P-values.
+
+\paragraph{Segmentation, copy number estimation and other metrics}
+Following the significance estimation, consecutive bins with abnormal coverage are merged into a call.
+Consecutive or nearby abnormal bins (e.g. one bin size apart) are merged into one variant if in the same direction (deletion or duplication).
+In {\sf PopSV}'s R package, the P-values can also be segmented using circular binary segmentation\cite{Seshan2017}.
+
+In addition to the Z-score, P-value, Q-value and number of bins of each call, {\sf PopSV} retrieves the average coverage in the reference samples and the fold change in the sample tested. The copy number is estimated by dividing the coverage in a region by the average coverage across the reference samples, multiplied by 2 (as diploidy is expected). In our bin setting, the estimation is correct if the bin spans completely the variant. For this reason we trust the copy number estimate for calls spanning 3 or more consecutive bins, as it is computed using the middle bin(s) which completely span the variant. In other cases we expect the copy number estimate to be under-estimated.
+All this additional information can be used to order or retrieve high confidence calls. For examples, several consecutive bins or a copy number estimate around an integer value increases our confidence in a call. In our benchmark, we used the entire set of calls.
+
+\subsection*{Validation and benchmark of {\sf PopSV}}
+
+We compared {\sf PopSV} to {\sf FREEC}\citep{Boeva2011}, {\sf CNVnator}\citep{Abyzov2011} and {\sf cn.MOPS}\citep{Klambauer2012}, three popular RD methods that can be applied to WGS datasets to identify CNVs. {\sf FREEC} segments the RD values of a sample using a LASSO-based algorithm while {\sf CNVnator} uses a mean-shift technique inspired from image processing. {\sf cn.MOPS} considers simultaneously several samples and detects copy number variation using a Poisson model and a Bayesian approach. We also ran {\sf LUMPY}\citep{Layer2012} which uses an orthogonal mapping signal: the insert size, orientation and split mapping of paired reads.
+
+{\sf FREEC} and {\sf CNVnator} were run on each sample separately, starting from the BAM file. {\sf FREEC} internally corrects the RD for GC and mappability bias. In order to compare its performance across the entire genome, the minimum telocentromeric distance was set to 0. The remaining parameters were set to default. Of note an additional run with slightly looser parameter ('breakPointThreshold=0.6') was performed to get a larger set of calls used in some parts of the in silico validation analysis to deal with borderline significant calls. {\sf CNVnator} also corrects internally for GC bias. We used default parameters. For the analysis using higher confidence calls, we used calls with either 'eval1' or 'eval2' lower than 10-5 (instead of the default 0.05).
+{\sf cn.MOPS} was run on the same GC-corrected bin counts used for {\sf PopSV}. All the samples are analyzed jointly. Of note an additional run with slightly looser parameter ('upperThreshold=0.32' and 'lowerThreshold=-0.42') was performed to get a larger set of calls used in some parts of the in silico validation analysis to deal with borderline significant calls.
+For {\sf LUMPY}, the discordant reads were extracted from the BAMs using the recommended commands. Split-reads were obtained by running {\sf YAHA}\citep{Faust2012} with default parameters. All the CNVs (deletions and duplications) larger than 300 bp were kept for the upcoming analysis. Calls with 5 or more supporting reads were considered high-confidence.
+
+First, we compared the frequency at which a region is affected by a CNV using the calls from the different methods. In order to investigate how many systematic calls are present in a typical run, we compare the frequency distributions on average per sample. In figure \ref{fig:freqmeth}, the bars represents the average proportion of a sample's calls in each frequency range.
+
+Then, the samples were clustered using the CNV calls. The distance between two samples A and B is defined as : $1-2 \frac{|VAB|}{(|VA|+|VB|)}$ where VA represents the variants found in sample A, VAB the variants found in both A and B, and |V| the cumulative size of the variants. Hence, the similarity between two samples is represented by the amount of sequence called in both divided by the average amount of sequence called. This distance is used for hierarchical clustering of the samples. Different linkage criteria (``average'', ``complete'' and ``Ward'') were used for the exploration. In our dendograms we used the ``average'' linkage criterion. The same clustering was performed using only calls in regions with extremely low coverage (reference average <10 reads).
+
+To assess the performance of each method, we measured the number of CNVs identified in each twin that were also found in the matching twin. In order to avoid missing calls with borderline significance, we used slightly less confident calls for the second twin. We removed calls present in more than 50\% of the samples to ensure that systematic errors were not biasing our replication estimates. Hence, a replicated call is most likely true as it is present in a minority of samples but consistently in the twin pair. Even if we removed systematic calls, the most frequent calls in the cohort are more likely to look replicated by chance, compared to rare calls. To normalize for this effect, we use the frequency distribution to compute the number of replicated calls expected by chance. In practice the null concordance for each call is simulated by a Bernoulli distribution of parameter the frequency of the call. This number of replicated calls by chance is subtracted to the original number of replicated calls to give an adjusted measure of sensitivity. Although we do not know the true number of variant, this number of replicated calls is used to compare the different methods.
+When possible, the low-quality calls were also gradually filtered to explore the effect on the replication metrics.
+For {\sf CNVnator}, we used the minimum of the eval1 and eval2 columns, with lower values corresponding to higher quality calls.
+For {\sf LUMPY}, the number of supporting reads was used.
+For {\sf PopSV}, we filtered calls based on adjusted P-values.
+
+In addition to their replication, we compared which regions were called by several methods.
+For each of the calls found in less than 50\% of the samples, we overlapped the region with calls from other methods in the same sample.
+If calls from another method overlapped we considered the call shared and saved which methods shared the call.
+To focus on on high quality calls we considered calls found by at least two methods and computed the proportion of calls from one method found by each of the other methods.
+This metric captures how much each method recovers high-quality calls from a second method.
+
+
+\paragraph{Concordance between different bin sizes}
+We compared calls using small bins (500 bp) and calls using larger bins (5 Kbp). In theory, calls from the 5 Kbp analysis should be supported by many 500 bp calls. We also expect large stretches of 500 bp calls to be detected in the 5 Kbp analysis. This comparison is informative as it explores the quality of the calls, the size of detectable events and the resolution for different bin sizes. First we counted how many small bin calls supported any large bin call. These metrics were separated according to the size of the large bin call. Overall, we find that 5 Kbp calls are well supported by 500 bp calls, with only 14\% of the 5 Kbp bins not supported by any 500 bp bin (Fig. \ref{fig:size:spec}). To investigate large bin calls with no supporting small bin call, we display the average Z-scores in the small bins overlapping large bin calls to test if the lack of support is due to lower confidence or real discordancy between the different runs. If the Z-scores in the small bins deviates from 0 in the correct direction, we conclude that they support the large bin call. Even for these unsupported 5 Kbp calls, we find that the 500 bp bins RD was consistently enriched (or depleted) although not enough to be called with confidence (Fig. \ref{fig:size:zdel} and \ref{fig:size:zdup}). This is expected given the higher background noise in the 500 bp analysis that will reduce the power to call these variants. Next, we looked at the proportion of 500 bp calls, grouped by size, that were found in the 5 Kbp calls. More specifically, we grouped them by size to verify that large enough small bin calls are present in the large bin calls. This analysis is used to both test the sensitivity of {\sf PopSV} with a particular bin size, and its resolution to variants smaller than the bin size. Indeed, this framework allow us to ask questions such as: how much of the variants spanning only half a bin are detected? We find that the concordance gradually increases until the 500 bp calls reach 5 Kbp in size where the concordance rises to nearly 100\% (Fig. \ref{fig:size:sens}). This suggests that {\sf PopSV} is able to detect approximately 75\% of the events as large as half its bin size, and almost all events larger than its bin size. As expected, only a small proportion of the small 500 bp calls overlap 5 Kbp calls and they likely corresponds to fragmented larger calls. Considering the trade-off between bin size and noise, this suggests running {\sf PopSV} with a few bin sizes to better capture variants of different sizes.
+
+\subsection*{CNV detection in the CENet cohorts}
+CNVs were called using {\sf PopSV} using 5 Kbp bins and all the samples from both the epilepsy and control cohorts as reference.
+We annotated the frequency of the CNVs using germline CNV calls from the Twin and cancer datasets (internal database) as well as four public CNV databases:
+
+\begin{itemize}
+\item CNVs from Phase 1 of the 1000 Genomes Project as identified by {\sf GenomeSTRiP}\citep{Handsaker2015}.
+\item SV from the 1000 Genomes Project phase 3\citep{Sudmant2015a}.
+\item Genome of Netherlands\citep{Francioli2014}.
+\item CNVs from the Simons Genome Diversity Project\citep{Sudmant2015}.
+\end{itemize}
+
+CNVs were annotated with the maximum frequency in the databases.
+For each CNV to annotate, any overlapping CNV in the CNV databases were considered.
+This is a stringent criterion that ensures that the entire regions of a rare CNV, for example, is never affected by common CNVs in the databases. 
+Hence, a rare CNV is defined as present in less than 1\% of the samples in each of the five CNV databases.
+
+To test for a difference in deletion/duplication ratio among rare CNVs, we compared the numbers of rare deletions and duplications in the epilepsy patients and controls using a $\chi^2$ test.
+The same test was performed after downsampling the controls to the sample size of the epilepsy cohort.
+
+\subsection*{CNV enrichment in exonic region and around epilepsy genes}
+
+\paragraph{Enrichment in exons}
+For each cohort, we retrieved the CNV catalog by merging CNV that are recurrent in multiple samples.
+Hence, the CNV catalog represents all the different CNVs found in each cohort.
+To control for the population size, we sub-sampled 150 samples in each cohort a hundred times.
+For each sub-sampling and each cohort, control regions are selected to fit the size distribution of the CNV catalog and the overlap with centromere, telomeres and assembly gaps (details in the next section).
+
+Then, we computed the proportion of CNV and control regions that overlap an exon.
+The fold-enrichment is the ratio of these proportions and represents how much more/less of the CNVs overlap an exon compared to the control regions.
+The boxplot in Fig. \ref{fig:exenr} shows the distribution of the 100 sub-sampling in each cohort.
+
+
+To test if the difference observed between the cohort is significant, the {\it cohort} labels were permuted 10,000 times and the difference in median across the 100 sub-sampling was saved.
+The resulting P-value was computed as $\frac{1+d}{1+N}$ where $d$ is the number of times the permuted difference was greater or equal to the observed difference, and $N$ is the number of permutations.
+
+The same analysis was repeated for exons from genes with a probability of loss-of-function intolerance\citep{Lek2016} higher than 0.9.
+These genes were called {\it LoF intolerant genes} in Fig. \ref{fig:exenr}.
+Small (< 50Kbp) and large (>50 Kbp) CNVs were analyzed separately.
+The analysis was repeated using rare CNVs only.
+
+
+\paragraph{Selecting control regions}
+The control regions must have the same size distribution as the regions they are derived from (e.g. CNVs in a CNV catalog).
+We also controlled for the overlap with centromere, telomeres and assembly gaps (CTGs) to avoid selecting control regions in assembly gaps where no CNV or annotation is available.
+To select control regions, thousands of bases were first randomly chosen in the genome.
+The distance between each base and the nearest CTG was then computed.
+At this point, selecting a region of a specific size and with specific overlap profile can be done by randomly choosing as center one of the bases that fit the profile:
+
+\begin{equation}
+  \left\{b,  O_{CTG}(d_{CTG}^b - \frac{S_r}{2}) < 0\right\}  
+\end{equation}
+
+\noindent with $O_{CTG}$ equals 1 if the original region overlaps with a CTG, -1 if not; $d_{CTG}^b$ is the distance between base $b$ and the nearest CTG; and $S_r$ is the size of the original region.
+For each input region, a control region was selected and had by construction the exact same size and overlap profile.
+
+
+\paragraph{Recurrence of rare exonic CNVs}
+In each cohort, we retrieved the CNV catalog of rare (<1\% in all 5 public datasets) exonic CNVs.
+We annotated each CNV with its recurrence in the cohort.
+We then evaluated the proportion of the CNVs in the catalog that are private (i.e. seen in only one sample), or seen in X samples or more.
+This cumulative proportion of CNVs is shown in Fig. \ref{fig:epiexpriv}.
+The control cohort was down-sampled a thousand times to the same sample size as the epilepsy cohort.
+These down-sampling provided a confidence interval (ribbon in Fig. \ref{fig:epiexpriv}) and an empirical P-value.
+
+We performed the same analysis after removing the top 20 samples with the most non-private rare exonic CNVs (Fig. \ref{fig:epiexpriv2}).
+With this analysis, we tried to remove the potential effect of a few extreme samples.
+
+We also repeated the analysis using only French-Canadians individuals, to ensure that the observed differences are not caused by rare population-specific variants (Fig. \ref{fig:epiexpriv2}).
+
+
+\paragraph{CNVs and epilepsy genes}
+We used the list of genes associated with epilepsy from the EpilepsyGene resource\citep{Ran2015} which consists of 154 genes strongly associated with epilepsy.
+For a particular set of CNV we count how many of the genes hit are known epilepsy genes.
+We noticed that the epilepsy genes tend to be large, and genes hit by CNVs also (Fig. \ref{fig:epigenesize}).
+This could lead to a spurious association so we also performed a permutation approach that controls for the size of the genes.
+To control for the gene size of epilepsy genes and CNV-hit genes, we randomly selected genes with sizes similar to the genes hit by CNVs and evaluated how many of these were epilepsy genes.
+After ten thousand samplings, we computed an empirical P-value.
+The permutation P-value was computed as $\frac{1+d}{1+N}$ where $d$ is the number of times the number of epilepsy genes in the random set of genes was greater or equal to the one in genes hit by CNVs, and $N$ is the number of permutations.
+Using this sampling approach we tested different sets of CNVs: deletion or duplications of different frequencies in the epilepsy cohort, control individuals and samples from the twin study.
+
+To investigate rare non-coding CNV close to known epilepsy genes, we counted how many patients have such a CNV at different distance thresholds.
+For example, how many patients had a rare non-coding CNV at 10 Kbp of an epilepsy gene's exon or closer.
+We compared this cumulative distribution to the control cohort, after down-sampling it to the sample size of the epilepsy cohort.
+Down-sampling was also used to produce a confidence interval, represented by the ribbon in Fig. \ref{fig:epidistncfun}).
+This analysis was repeated using deletions only.
+Each epilepsy gene was also tested for an excess of rare non-coding deletions in patients versus controls using a Fisher test.
+
+In order to retrieve non-coding CNV that might have a functional impact, we downloaded eQTLs associated with the epilepsy genes, as well as DNase 1 hypersensitive sites associated with the promoter of epilepsy genes.
+The eQTLs are provided by the GTEx project\citep{Ardlie2015}.
+Pairs of associated DNase 1 hypersensitive sites and associated genes\citep{Maurano2012} were downloaded at \url{http://www.uwencode.org/proj/Science_Maurano_Humbert_et_al/data/genomewideCorrs_above0.7_promoterPlusMinus500kb_withGeneNames_35celltypeCategories.bed8.gz}.
+
+A Kolmogorov-Smirnov test was used to compare the distance distributions in epilepsy patients versus controls.
+We also computed the odds ratio of having such a CNV for different distance thresholds between epilepsy patients and controls.
+For a distance $d$, we computed:
+
+$$ OR = \frac{S_{patient}^{CNV}}{S_{control}^{CNV}} / \frac{S_{patient}^{noCNV}}{S_{control}^{noCNV}} $$
+
+where $S_{patient}^{CNV}$ is the number of patients with a rare non-coding CNV overlapping a functional region and located at $d$ bp or less from the exon of a known epilepsy gene.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

@@ -1,0 +1,234 @@
+\chapter{Discussion of Results and Implications}
+\label{chap:disc}
+
+
+\section*{Population-based approaches and whole-genome sequencing}
+% Population-based approach improves sensitivity and resolution. Useful for many applications, cancer, disease, repeats.
+The three chapters highlighted the usefulness of population-based approach to detect genomic variation.
+The superior sensitivity made it possible to detect somatic variants in tumor samples, small and non-coding variants in epilepsy patients and variants in low-mappability regions in healthy individuals.
+% The results and implications that stemmed from these variants are described below.
+The main results and implications concerning ccRCC, epilepsy and repeat-rich regions have been described in their respective chapters.
+However, all these results relied on a first step of variant detection that used the same strategy: analyzing a genome in the context of many to minimize the effect of technical noise. 
+This population-based approach can benefit variant calling as long as the genomes in the population are sequenced with similar protocol and machine, and the raw data is pre-processed with the same pipeline.
+If this is the case, other factors that don't affect technical variation, for example gender or ethnicity, should not affect the variant calling.
+The main result of this work, at least in term of methodology, is the demonstrated power of population-based approach across multiple applications.
+
+All three chapters used WGS data across dozens or hundreds of genomes.
+At the beginning of this work, WGS data across that many samples was not widespread.
+Large-scale sequencing projects used to be rare and international efforts involving numerous centers\cite{Lander2001,Durbin2010}.
+Yet, the cost of sequencing has been steadily decreasing and new machines currently advertise sub-1000\$ costs for whole-genome sequencing.
+As a result, sequencing projects involving hundreds of genomes are more and more common.
+Motivated by the future opportunities for personalized medicine, hundreds of genomes are being sequenced to characterize the population in different countries\cite{Francioli2014,Wong2013,Gudbjartsson2015}.
+For disease studies as well, whole genome sequencing of hundreds of participants has been performed or is currently under way.
+Large-scale project that focus on single disease include the MSSNG collaboration\footnote{\url{https://www.mss.ng}} that aims at sequencing 10,000 families affected by autism and whose first results were published recently\cite{Yuen2017} and the Alzheimer's Disease Sequencing Project\cite{Beecham2017} which is sequencing more than a thousand patients with Alzheimer disease.
+WGS is also at the core of multi-disease projects that are currently in progress.
+The Genomics England initiative\footnote{\url{https://www.genomicsengland.co.uk}} will sequence 100,000 genomes from patients with rare diseases and cancers while the TOPMed consortium\footnote{\url{https://www.nhlbiwgs.org/}} plans on sequencing the genome of 120,000 individuals to study the contribution of genetics to heart, lung, blood and sleep disorders.
+Often, this data is first processed at the individual level and later pooled to derive population information or association metrics.
+Our data highlights the benefit of pooling individuals earlier in the analysis workflow.
+Instead of pooling results after variant calling, we found that variant calling could be significantly improved thanks to population information.
+I believe that population-based approaches similar to {\sf PopSV} could have a large impact on the variant discovery across these large-scale projects.
+It is regrettable to have information across hundreds of other experiments and to keep it aside for variant calling. 
+Of note, promising avenues are currently being explored to reverse this trend, for example by integrating population information even before variant calling.
+The new field of genome graphs aims at constructing a reference genome that includes known variation in order to directly improve read mapping, variant calling and population representation.
+
+%% WGS
+In addition to the population-based approach, our results also contribute to the case for whole-genome sequencing when designing a large scale genomic study.
+Although more costly than genotyping arrays or exome sequencing, WGS can detect a larger range of variants: rare and frequent, coding and non-coding, SNVs and CNVs or other SVs.
+WGS data produced with a primary objective in mind can often be re-used to study different aspects of genomic variation.
+For example, the data used in Chapter \ref{chap:loy} was originally produced to describe somatic SNVs and broad CNV patterns in ccRCC\cite{Scelo2014}.
+In Chapter \ref{chap:loy}, we re-analyzed this dataset to further investigate the arm-level aberrations across the cohort and more precisely estimate the amount of somatic LOY in tumors from male patients.
+These results were replicated with a PCR-based approach in a different cohort of tumors and represent the foundation of the functional importance of somatic LOY advocated in our study.
+In chapter \ref{chap:epi} and \ref{chap:rep}, the combination of WGS and {\sf PopSV} was also instrumental in discovering novel scientific results.
+Novel coding variants in epilepsy or low-mappability regions were identified.
+A CNV profile that had never been associated with epilepsy, rare non-coding CNVs, was for the first time seen to be strongly enriched close to known epilepsy genes.
+Thousands of low-mappability regions that frequently experience CNV were identified, including some located near or within protein-coding genes.
+
+\section*{Somatic loss of Y and gender imbalance in cancer}
+
+The gender imbalance in the renal cancer incidence is not completely understood.
+Our results suggest that somatic LOY occurs frequently in male tumors and have a functional impact.
+Hence, loss of chromosome Y could explain part of the higher incidence in males.
+Other cancers, such as liver and bladder cancers, show gender imbalance toward males and might also be partly explained by LOY\cite{Siegel2017}.
+Several studies have found that more than 30\% of tumors from these cancers experienced LOY\cite{Sauter1995,Park2006}.
+Our study and others suggest that LOY could be a driver mechanism of tumor progression by disregulating tumor suppressors, such as {\it KDM5D} and {\it KDM6C}.
+Of note, {\it KDM5D} and {\it KDM6C} are both expressed in the liver and the bladder.
+Because of the multiple similarities with our study of ccRCC, it is sensible to speculate that the same mechanism, that is downregulation of {\it KDM5D} and {\it KDM6C} through LOY, is involved in the tumor progression of cancers of the liver and bladder.
+A population-based approach such as the one we used might identify more subtle LOY in sequencing datasets which could help estimate the rate and impact of this type of variation.
+
+Although incidental, we detected LOY in the blood samples as well, both in the WGS and the PCR-based replication.
+As described in the literature, somatic LOY in blood was associated with older age in our cohort.
+Two studies suggest that the presence of LOY in blood samples can be associated with higher incidence rate of non-hematological cancers or Alzheimer disease\cite{Forsberg2014,Dumanski2016}.
+Unfortunately, due to the absence of matched healthy controls we couldn't directly test the association with ccRCC.
+We found no significant associations between LOY in blood and the tumor stage or grade.
+Further investigations in the future will require more samples, including matched controls and balanced numbers of different tumor grades.
+
+
+\section*{Small and non-coding CNVs in epilepsy and neurological disorders}
+
+Our results suggest that WGS will be necessary to fully characterize the genetic factors associated with epilepsy.
+First, WGS is more suitable for CNV detection compared to other sequencing approaches (e.g. exome sequencing).
+Despite its successes in detecting rare SNVs associated with genetic disorders, exome sequencing is less suited for CNV and SV detection.
+Indeed, the step that captures the regions of interest adds another layer of technical bias.
+Not only is the read coverage affected by the capture efficiency in each region, the fragmented representation of the genome also hinders the sensitive detection of CNVs.
+Considering the importance of CNVs in epilepsy as shown by our study and others, WGS will be key to efficiently detect even exonic variants associated with the disease.
+Second, we show for the first time an association between non-coding CNVs and epilepsy.
+Thanks to WGS, we were able to interrogate the presence of both small and non-coding variants.
+In contrast, previous array-based study were limited to large CNVs which tended to overlap exonic regions.
+We found a clear enrichment of rare non-coding CNVs in patients close to genes that were previously associated with epilepsy.
+Even more convincing, the enrichment increased the closer to the exon and was boosted for deletions and variants overlapping regulatory regions.
+Similar results were found in individuals with autism where non-coding {\it de novo} CNVs and SNVs were enriched up to 100 Kbp from autism-associated genes\cite{Turner2016}.
+
+These conclusions are relevant for epilepsy but also for other neurological disorders.
+Large CNVs have also been associated with autism\cite{Pinto2010}, mental retardation\cite{Mefford2009} and schizophrenia\cite{Walsh2008,Marshall2016}.
+\begin{comment}
+  Genes in neurological pathways tend to be large and organized in large gene families often located within segmental duplications. 
+\end{comment}
+In each disease, the same pattern emerged: probands tend to have rare large CNVs and/or in hotspot regions flanked by segmental duplications.
+Often, the same CNV hotspot regions have been associated with several neurological disorders as is the case for 1q21.1, 15q13.3 and 16p11.2\cite{Mefford2009}.
+Based on these commonalities and our results, I expect that small and non-coding CNVs play a role in other neurological disorders as well.
+In general, the study of the genetics of neurological disorder could greatly benefit from WGS approaches similar to the one we used in chapter \ref{chap:epi}.
+
+The enhanced resolution of WGS and our population-based approach suggest that some types of variants had been missed before.
+The inclusion of such genomic variants might help characterize the exact syndrome or grouping patients with similar etiology.
+Drug resistance is an important problem in idiopathic epilepsy and much remains to be done to understand its causes.
+The study presented in chapter \ref{chap:epi} contributes to the identification of genes that might be associated with epilepsy and advocates for the inclusion of small and non-coding CNVs in the genomic profile of epilepsy patients.
+It is my hope that either these candidate genes or the inclusion of those variants will one day help to devise new drugs or to assist clinician when choosing a treatment.
+
+
+\section*{Including low-mappability regions in genome-wide studies}
+
+More and more evidence supports the importance of repeated regions in disease and human phenotypes.
+After being considered junk DNA for a long period, the role of many types of repeats is becoming clear.
+From the highly variable STRs and their association with gene expression changes\cite{Gymrek2016}, to the contribution of TEs in regulation networks\cite{Bourque2009} or the satellite instability in cancer\cite{Kim2013}, repeats are gathering more attention.
+Still, repeats are under-studied because of the technical challenges and reluctant mentality shift.
+Our results show that WGS and a population-based approach is sufficient to detect CNV in many repeat-rich regions.
+Moreover, we found that these regions are more likely to harbor CNVs compared to the rest of the genome.
+Many low-mappability regions are also located close to protein-coding genes, some of which have been linked to Mendelian diseases before.
+By masking repeats, genome-wide association studies have discarded a small part of the genome but a large fraction of the genomic variation.
+I believe that approaches similar to the one presented in this work, as well as future technologies that will make repeat integration easier, could lead to a better genomic characterization of diseases and human phenotypes.
+
+
+
+
+\chapter{Conclusions and Future Directions}
+\label{chap:conc}
+
+The population-based approaches presented here have been successful at detecting somatic and challenging germline changes in copy number but more remains to be done.
+Although we were able to detect the presence of variation, more effort will be necessary to fully characterize the alternate alleles.
+The methods could also be extended to other sequencing technologies, particularly targeted sequencing such as whole-exome sequencing.
+Similar approaches could also be extended to other types of SVs, for example translocations and inversions.
+Finally, recent technological advances shine a promising light on the future of SV characterization.
+Genome editing might help investigate the functional impact of non-coding CNVs while new sequencing technologies will likely be used in concert to integrate SVs and low-mappability in genomics studies.
+
+\section*{From variant detection to base-pair resolution}
+% Long reads are the shit, but expensive shit.
+The population-based approach presented in this work is powerful to detect variation but cannot fully characterize the variants.
+Deriving the exact sequence of the mutated allele or breakpoints remains challenging in repeat-rich regions or for complex SVs.
+Indeed, large sample sizes and population-oriented analysis are mostly able to flag the presence of an abnormal signal in these regions.
+To unlock a base-pair level resolution for the breakpoints or the variant sequence in general, a different type of data will be necessary rather than more of the same data.
+In WGS early years, genomes were sequenced at low depth and pooling individuals helped increase read support necessary to estimate the variant sequences.
+A typical WGS genome is now often 30x deep or more and pooling reads across different individuals will have only marginal benefit on the base-pair resolution of the SVs.
+At this depth, the problematic variants are either in repeat-rich regions or more complex than the canonical SV types.
+More of the same short reads wouldn't bring much new information and the ambiguity would likely remain.
+In the end, the short read size is the main limitation.
+Hence, long read sequencing will likely have a large impact on characterizing many of the SVs that remain challenging.
+Several studies already showed the power of long reads for SV detection\cite{Chaisson2014,Pendleton2015}.
+Unfortunately the higher cost of these technologies limits their use.
+The cost and usage might change but it is unlikely that a very large number of genome will be sequenced with these technologies.
+Still, this technology could be used to validate and confirm SVs identified in large scale short-read projects.
+By carefully choosing a few genomes to sequence, the catalog of complex and repeat-rich SVs could be greatly improved.
+For example, sequencing genomes carrying candidate pathogenic variants could validate and provide more insights into the variant impact or potential mechanism of action.
+Selecting a few genomes with different complex SVs and low-mappability variants could also maximize the gain from each long-read sequencing experiment.
+In summary, long-read sequencing of a few carefully selected genomes would nicely complement deep short-read sequencing across large cohorts.
+Of note, a more cost effective approach would be to capture the regions containing the SVs detected from the large-scale short-read surveys.
+The challenge here is to efficiently and accurately capture large and potentially repeat-rich regions.
+If this type of capture is possible, Sanger sequencing could also be used to characterize the variants at the base-pair level.
+Having a validated set of variants at the base-pair level and covering low-mappability regions will also provide an extremely useful gold-standard to assess the sensitivity and specificity of CNV methods.
+In the absence of such a gold-standard, we had to rely on indirect assessment, such as the replication in twins or the comparison with just a few long-read assemblies.
+
+\section*{Extension to targeted sequencing}
+% Other application WES/targeted sequencing
+Targeted sequencing involve a step of capture in which the desired genomic regions are selectively amplified.
+Thanks to the capture, only a set of regions, for example coding regions, are sequenced.
+However, the capture efficiency varies depending on the design and regions, introducing additional technical variation in the read coverage.
+CNV detection from the read coverage is challenging as a result.
+Existing methods turned to population-based approach, similar to our WGS method {\sf PopSV}, in order to normalize read coverage using other experiments that used similar capture\cite{Shi2013,Talevich2014}.
+{\sf PopSV} could be easily extended to such application as it doesn't rely on coverage uniformity but rather considers each region separately in the context of reference samples.
+We actually ran {\sf PopSV} successfully on several whole-exome sequencing projects with minimal changes.
+Briefly, one additional step in the pipeline was necessary: the removal of regions that were not covered by the sequencing experiment.
+Of note, the quality control step was even more important here in order to ensure that the reference and tested samples originated from the same sequencing protocol.
+Indeed, capture protocols are continuously evolving with new exome capture kits available every year.
+Although we believe that the normalization used by {\sf PopSV} is superior to several of existing methods, the regions with abnormal coverage are merged using a simplistic approach.
+For WGS, it is natural to merge consecutive regions that share a CNV signal as they are located one next to the other.
+In targeted sequencing, there are often stretches of non-covered regions that separate captured regions.
+By integrating this information a better segmentation can be performed as shown by several methods\cite{Fromer2012,Magi2013}.
+In the context of an extension to targeted sequencing, we could improve {\sf PopSV}'s segmentation step with such algorithms in order to have both a more advanced normalization and an appropriate segmentation.
+
+\section*{Extension to balanced structural variation}
+% Other application: other types of SVs (balanced)
+{\sf PopSV} could also be extended to other types of SVs, as the name originally intended.
+Currently, abnormal coverage of properly mapped reads identifies regions with a change in copy number.
+In the future, {\sf PopSV} could operate on the coverage of reads with discordant paired-end mapping.
+For example, reads whose pair couldn't be aligned or aligned at an abnormal distance or orientation.
+An abnormal excess of discordant reads would be a sign of SV.
+With {\sf PopSV}'s population-based approach, discordant mapping due to repeats will be corrected for and only regions with a real excess of discordant mapping should be called.
+This type of test could be run across genomic regions, as for the CNV analysis, or between pairs genomic regions.
+The objective of the paired-regions approach is to increase the signal-to-noise ratio between the SV-caused discordant reads and the background level.
+Indeed, the background level of discordant reads in a region might be high enough to drown the signal from the additional reads created by the SV.
+When focusing on discordant read pairs with one read mapped to a region and the other in another distant region, the amount of background discordant mapping is much lower.
+The excess of discordant read pair linking the boundaries of a translocation or an inversion might be more easily detected.
+Both of these approaches are currently being tested.
+The original scan, i.e. testing one region at a time, seems to be under-powered and return much fewer calls than the CNV scan.
+Alternatively, this extension of {\sf PopSV} would also be useful to annotate calls from other methods, for example those that identify clusters of discordant or split reads.
+These methods tend to suffer from a high false-positive rate most likely due to repeat confusion.
+
+\section*{Investigating the functional impact of non-coding CNVs}
+
+We identified dozens of rare non-coding CNVs located close to known epilepsy genes and absent from our controls and public CNV databases.
+The most promising candidates are located in regions that were previously associated with changes in the gene expression and are predicted to host regulatory regions.
+While the frequency and location of these non-coding CNVs are encouraging, it is not clear which variant really has an impact on the gene and eventually the disease phenotype.
+Indeed, we observed a clear enrichment which means that some CNVs are associated with the disease.
+In order to narrow down the list of candidate regions we could either increase the sample size or experimentally test the variant's impact.
+Both strategies have their own set of challenges.
+
+To achieve a higher sample size, more patients are necessary and might require national or international collaboration.
+Because epilepsy is a diverse disease, the new patients should be matched as much as possible with our cohort in order to maximize the chances of observing recurrent variants.
+Finally, the number of probands that need to be sequenced to identify single genes or non-coding regions might be unrealistically high, again because of the diverse phenotype and complex gene network involved in the disease mechanism.
+
+Investigating deeper our current candidates might be more feasible thanks to recent advances in cell reprogramming and DNA editing.
+It is not feasible to study live human brains and unpractical to collect post-mortem brains in correct conditions for functional assays.
+Cell reprogramming provides a better alternative.
+By reprogramming cells from a carrier into relevant cell types, e.g. neurons, the effect of a variant on the gene function could be tested in the laboratory.
+If patients' samples are unavailable or to better control for the genetic background, DNA editing like CRISPR-Cas9 could recreate the non-coding deletion in cells.
+DNA editing before cell differentiation would provide a culture of cells that could then be differentiated into different cell types to extensively study the effect of the variants.
+While a true ``epilepsy'' phenotype is almost impossible to test in a cell culture, we could investigate the effect of the variants on gene expression or other molecular phenotypes.
+Although this approach requires time, resources and expertise, it is more geared toward validating our non-coding candidates and more likely to give conclusive results.
+
+\section*{SV and WGS in the near future}
+
+Thanks to better sequencing technologies and methods, systematic {\it de novo} assembly of genomes might eventually supplant the re-sequencing approach that is dominant today.
+The optimal output would be phased sequence for each genome that is sequenced and assembled.
+SV detection would then come down to comparing the assembled genomes.
+Recent advances in long-read, linked-read, or conformation capture sequencing greatly improve the quality of the {\it de novo} assemblies and contains long-range information useful for phasing.
+However, for SV detection, long-read sequencing will be necessary to reach a base-pair resolution across the full genome, as mentioned above.
+Because of its cost, only a limited number of genomes will be sequenced with long-read sequencing in the near future.
+Furthermore, hundreds of thousands of genomes have been sequenced or are being sequenced with short-read technology.
+Until affordable and comprehensive {\it de novo} assembly is available, the field will likely move to hybrid strategies for SV analysis.
+But how could we integrate SV information from different approaches and across hundreds to thousands of genomes?
+The recent development of genome graphs provides a promising solution\cite{Paten2017}.
+Genome graphs represent the genome and genomic variation in a population using a graph structure.
+One of its current form corresponds to the current reference genome augmented with SNVs and indels from the 1000 Genomes Project\cite{Garrison2017}.
+Genome graphs are by nature flexible so that we could imagine further improving their breadth with high-quality {\it de novo} assemblies or SV catalogs from long-read sequencing datasets.
+Using a genome graph populated with the high-resolution variants, SV could be more efficiently genotyped in short-reads datasets across large populations.
+Genome graphs also provide an ideal structure to represent complex haplotypes, such as those involving SVs.
+As for other types of variants, haplotype information will be invaluable to assist variant calling and to predict the functional impact of SVs.
+Short-read datasets could benefit from the long-range information present in the high-resolution datasets by integrating complex haplotype information in the genome graphs.
+With coordination and data sharing, and with genome graphs as a new reference system, there is hope that we can rapidly reach the point where phased high-resolution SVs can be genotyped accurately from short-read datasets spanning hundreds of thousands of genomes.
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
